@@ -1,0 +1,40 @@
+<table>
+
+    <thead>
+        <tr>
+            <th>Tour</th>
+            <th>Phương tiện</th>
+            <th>Giá</th>
+            <th>Mô tả</th>
+            <th>Thao tác</th>
+            
+            
+        </tr>
+
+    </thead>
+
+   <tbody>
+        <?php 
+        $detail = $this->detail;
+        foreach ($detail as $p){
+        ?>
+        <tr>
+            <td><?php echo $p['tour_intro_name'];?></td>
+             <td><?php echo $p['transport_name'];?></td>
+             <td><?php echo $p['price'];?>&nbsp;VND</td>
+             <td><?php echo $p['price_description'];?></td>
+             <td><a href="/admin/trans-detail/edit/id/<?php echo $p['id'];?>">Sửa</a>
+             <a class="delete" href="/admin/trans-detail/del/id/<?php echo $p['id'];?>">Xóa</a>
+            </td>
+           
+        </tr>
+        <?php }?>
+        
+    </tbody>
+</table>
+<div id="deleteDialog" style="display:none">
+    <p>Bạn có chắc chắn muốn xóa không?</p>
+</div>
+<div style="margin-top: 20px;">
+    <a class="button" href="/admin/trans-detail/add">Thêm Giá</a>
+</div>

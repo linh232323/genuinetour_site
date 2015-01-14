@@ -1,0 +1,37 @@
+<table>
+
+    <thead>
+        <tr>
+        	<th>#</th>
+            <th>Phân loại tour (tiếng Việt)</th>
+            <th>Phân loại tour (tiếng Anh)</th>
+            <th>Thao tác</th>
+        </tr>
+
+    </thead>
+
+    <tbody>
+        <?php 
+        $sections = $this->sections;
+        foreach ($sections as $s){
+        ?>
+        <tr>
+        	<td><?php echo $s['id'];?></td>
+            <td><?php echo $s['name'];?></td>
+            <td><?php echo $s['name_en'];?></td>
+            <td>
+                <a href="/admin/tour-section/edit/id/<?php echo $s['id'];?>">Sửa</a>
+                <a class="delete" href="/admin/tour-section/del/id/<?php echo $s['id'];?>">Xóa</a>
+            </td>
+        </tr>
+        <?php }?>
+        
+    </tbody>
+
+</table>
+<div id="deleteDialog" style="display:none">
+    <p>Bạn có chắc chắn muốn xóa không?</p>
+</div>
+<div style="margin-top: 20px;">
+    <a class="button" href="/admin/tour-section/add">Thêm phân loại mới</a>
+</div>

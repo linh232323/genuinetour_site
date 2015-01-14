@@ -1,0 +1,42 @@
+<table>
+
+    <thead>
+        <tr>
+            <th>Tour</th>
+            <th>Hạng Tour</th>
+            <th>Giá Tour</th>
+            <th>Phụ thu</th>
+            <th>Phụ thu nước ngoài</th>
+            <th>Thao tác</th>
+        </tr>
+
+    </thead>
+
+    <tbody>
+        <?php 
+        $accounts = $this->accounts;
+        $tour = new Admin_Model_TourIntro();
+        $tour_cat = new Admin_Model_TourCategory();
+        
+        foreach ($accounts as $a){
+        ?>
+        <tr>
+          <td><?php $tour->TourIntro_getById($a['tour_id']); echo $tour->getName();?></td>
+          <td><?php $tour_cat->TourCategory_getById($a['tour_cat_id']); echo $tour_cat->getTour_Cat_Name();?></td>
+          <td><?php echo $a['price'];?> VND</td>
+          <td><?php echo $a['surcharge'];?> VND</td>
+          <td><?php echo $a['foreign_charge'];?> VND</td>
+          <td>
+              <a href='/admin/tour-price/edit/id/<?php echo $a['tour_id']?>/cat/<?php echo $a['tour_cat_id']?>'>Sửa</a>
+              <a class="delete" href='/admin/tour-price/del/id/<?php echo $a['tour_id']?>/cat/<?php echo $a['tour_cat_id']?>'>Xóa</a>
+          </td>
+        </tr>
+        <?php  }?>       
+    </tbody>
+</table>
+<div id="deleteDialog" style="display:none">
+    <p>Bạn có chắc chắn muốn xóa không?</p>
+</div>
+<div style="margin-top: 20px;">
+    <a class="button" href="/admin/tour-price/add">Thêm giá tour mới</a>
+</div>

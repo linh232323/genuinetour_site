@@ -1,0 +1,232 @@
+<?php $this->doctype();
+
+$banner = new Default_Model_Banner();
+$multi = $this->multilang;
+if(isset($this->lang)) {
+	$lang = $this->lang;
+}else
+{
+	$lang ="";
+}
+	?>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+        <title>Benly Tourist</title>
+        <link rel="stylesheet" type="text/css" href="<?php echo $this->baseUrl . '/' . $this->module; ?>/css/main.css"/>
+        <link rel="stylesheet" type="text/css" href="<?php echo $this->baseUrl . '/' . $this->module; ?>/css/jquery-ui.css"/>
+        <!-- <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.1/themes/base/jquery-ui.css" /> -->
+         <script type="text/javascript" src="<?php echo $this->baseUrl . '/' . $this->module; ?>/js/jquery-1.8.2.min.js"></script> 
+        <script type="text/javascript" src="<?php echo $this->baseUrl . '/' . $this->module; ?>/js/jquery-ui.min.js"></script>
+        <script type="text/javascript" src="<?php echo $this->baseUrl . '/' . $this->module; ?>/js/jquery-validation.min.js"></script>
+        <script type="text/javascript" src="<?php echo $this->baseUrl . '/' . $this->module; ?>/js/jquery-currencyformat.js"></script>
+         <!--  <script src="http://code.jquery.com/ui/1.9.1/jquery-ui.js"></script> -->
+        <script type="text/javascript" src="<?php echo $this->baseUrl . '/' . $this->module; ?>/js/zrotat.js"></script>
+        <script type="text/javascript" src="<?php echo $this->baseUrl . '/' . $this->module; ?>/js/zsubmenu.js"></script>
+        <script type="text/javascript" src="<?php echo $this->baseUrl . '/' . $this->module; ?>/js/jquery.form.js"></script>
+       
+        <script type="text/javascript" src="<?php echo $this->baseUrl . '/' . $this->module; ?>/js/main.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function(){
+                $("div.slideshow").zrotat();
+                $(".nav-item").zsubmenu();
+                $("input[type=submit]").hover(function(){
+                    $(this).css("background-color","#06F");
+                    $(this).css("color","#FFF");
+                }, function(){
+                    $(this).css("background-color","#EEE");
+                    $(this).css("color","#666");
+                });
+            });
+        </script>
+    </head>
+    <body>
+    <div id="multi_lang">
+    	<a class ="lang" id="vi" href="#" title="Tiếng Việt" style="color:#FFF">Tiếng Việt <img src="/upload/vi.gif" /></a>
+    	<a class ="lang" id="en" href="#" title="English" style="color:#FFF">English <img src="/upload/en.gif"/></a>    	
+    </div>
+
+    <div class="banner" id="b1" >
+         <?php echo $multi['ad_1_banner']['name'.$lang];?>     
+    </div>
+    <div class="banner" id="b2" >
+         <?php echo $multi['ad_2_banner']['name'.$lang];?>     
+    </div>
+    <div class="banner" id="b3" >
+         <?php echo $multi['ad_3_banner']['name'.$lang];?>     
+    </div>
+	<div class="banner" id="b4" >
+		<?php echo $multi['ad_4_banner']['name'.$lang];?>     
+	</div> 
+        <div id="wrapper">
+            <div id="header">
+                <div id="banner">
+                
+                	<?php echo $multi['img_banner']['name'.$lang];?>                	
+                </div>
+                <div id="navigation">
+                    <ul id="nav-bar">
+                        <li class="nav-first">
+                        </li>
+                        <li class="nav-content">
+                            <ul id="nav-content-wrapper">
+                                <?php
+                                	$support = new Benly_Support();
+                               		$support->menu($this->menu,$lang,0);
+                                ?>
+                            </ul>
+                        </li>
+                        <li class="nav-last">
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div id="main">
+            	
+            	<div id="top">
+            		<div id="left-top">
+            			<div id="image-rotator" class="slideshow">
+	                        <img class="image-rotator-item active" src="<?php echo $this->baseUrl . '/' . $this->module; ?>/images/item01.jpg"/>
+	                        <img class="image-rotator-item" src="<?php echo $this->baseUrl . '/' . $this->module; ?>/images/item02.jpg"/>
+	                	</div>
+            		</div>
+	            	
+	            	<div id="right-top">
+	                     <?php echo $multi['video']['name'.$lang];?>     
+	                </div>
+	            </div>
+                <div id="left">
+                      <div class="left-group">
+	                        <div class="group-title"><h1><?php echo $multi['search_label']['name'.$lang]?></h1></div>
+	                        <div class="group-content">
+	                        	<div class="inner">
+		                        	<form action="/index/search/" method ="get">
+		                        		<table>
+		                        			<tr>
+		                        				<td><?php echo $multi['tour_name_label']['name'.$lang]?></td>
+		                        				<td><input type ="text" name="tour_name" /></td>
+		                        				<td><?php echo $multi['during_label']['name'.$lang]?></td>
+			                        			<td>
+			                        				<select name="during" style="width:180px">
+			                        					<option value="0"><?php echo $multi['all_label']['name'.$lang]?></option>
+			                        					<?php for($i=1;$i<=30;$i+=0.5){
+			                        						echo "<option value='$i'>";
+			                        						
+			                        						if($i == floor($i)){
+			                        							echo "$i Day(s)";
+			                        						}else{
+			                        							$night = floor($i);
+			                        							$day = $night + 1;
+			                        							echo "$day Day(s) $night Night(s)";	                        						
+			                        							}
+			                        						echo "</option>";	
+			                        					}?>
+			                        				</select>
+			                        			</td>
+		                        			</tr>
+		                        			<tr>
+		                        				<td><label><?php echo $multi['outward_label']['name'.$lang]?>:</label></td>
+		                        				<td> <select name="outward_transport" style="width:90px">
+		                        					<option value="0"><?php echo $multi['all_label']['name'.$lang]?></option>
+		                        					<?php $transport = new Default_Model_Transport();
+		                        					$data = $transport->Transport_listall();?>
+		                        					
+		                        					<?php foreach($data as $d){
+		                        						echo "<option value=".$d['id'].">".$d['name'.$lang]."</option>"; 
+		                        					}?>
+		                        					
+		                        				</select></td>
+		                        				<td><label><?php echo $multi['return_label']['name'.$lang]?>:</label> </td>
+		                        				<td><select name="return_transport" style="width:90px">
+		                        					<option value="0"><?php echo $multi['all_label']['name'.$lang]?></option>
+		                        					<?php foreach($data as $d){
+		                        						echo "<option value=".$d['id'].">".$d['name'.$lang]."</option>"; 
+		                        					}?>
+		                        				</select></td>
+		                        			</tr>
+		                        			<tr>
+		                        				<td></td>
+		                        				<td><input type ="submit" value="<?php echo $multi['search_label']['name'.$lang]?>"/></td>
+		                        			</tr>
+		                        		</table>		                        				                        		
+		                        	</form>
+	                        	</div>
+	                        </div>
+					</div>
+                    <div id="content">
+                        <?php echo $this->layout()->content; ?>
+                    </div>
+                </div>
+                <div id="right">
+                   <div class="right-group">
+                        <div class="group-title"><h1><?php echo $multi['live_support_label']['name'.$lang]?></h1></div>
+
+                        <div class="group-content">
+                            <div class="inner-sub">
+                                <a href="ymsgr:sendIM?benlytourist" >
+                                    <img src="http://opi.yahoo.com/online?u=benlytourist&amp;m=g&amp;t=5" height="15" width="15" border="0" alt=" " />
+                                </a>
+                                <b>Nguyễn Thị Lan Hương</b>
+                            </div>
+                            <div class="inner-sub">
+                                <a href="ymsgr:sendIM?benlytourist" >
+                                    <img src="http://opi.yahoo.com/online?u=benlytourist&amp;m=g&amp;t=5" height="15" width="15" border="0" alt=" " />
+                                </a>
+                                <b>Benly Tourist Support</b>
+                            </div>
+                        </div>
+                    </div>
+					
+					<div class="right-group">
+						<div class="group-title"><h1><?php echo $multi['post_label']['name'.$lang]?></h1></div>
+					 	<div class="group-content">
+					 	<?php
+						 	if($this->posts_layout){
+							echo "<ul>";
+						 	 foreach($this->posts_layout as $p){
+							
+						 		echo "<li><a href='/post/detail/id/".$p['id']."'>".$p['title']."</a></li>";
+						 	}
+							echo "</ul>";}
+						?>     
+					 	</div>
+					</div>
+					<div class="right-group">
+					 	<div class="group-title"><h1><a href="/index/under/"><?php echo $multi['feedback_label']['name'.$lang]?></a> <a href='/post/detail/id/3'>Map</a></h1>
+		</div>
+					 	     
+					 	
+					</div>
+					
+					<div class="right-group">
+					 	<div class="group-content">
+					 	<?php echo $multi['ad_5_banner']['name'.$lang];?>     
+					 	</div>
+					</div>
+					<div class="right-group">
+					 	<div class="group-content">
+					 	<?php echo $multi['ad_6_banner']['name'.$lang];?>     
+					 	</div>
+					</div>
+					<div class="right-group">
+					 	<div class="group-content">
+					 	<?php echo $multi['ad_7_banner']['name'.$lang];?>     
+					 	</div>
+					</div>
+					<div class="right-group">
+					 	<div class="group-content">
+					 	<?php echo $multi['ad_8_banner']['name'.$lang];?>     
+					 	</div>
+					</div>
+					
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+        <div id="footer-wrapper">
+            <div id="footer">
+            	 <?php echo $this->footer;?>
+            </div>
+        </div>
+    </body>
+</html>

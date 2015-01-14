@@ -1,0 +1,35 @@
+<table>
+    <thead>
+        <tr>
+            <th>Tour</th>
+            <th>Thời gian khởi hành</th>
+            <th>Thao tác</th>
+        </tr>
+
+    </thead>
+
+    <tbody>
+        <?php 
+        $schedule = $this->schedule;
+        $tour_model = new Admin_Model_TourIntro();
+        foreach ($schedule as $s){
+        ?>
+        <tr>
+            <td><?php $t = $tour_model->TourIntro_getById($s['tour_id']); echo $t['name'];?></td>
+            <td><?php echo date("d-m-Y", strtotime($s['start_date']));?></td>
+            <td>
+                <a href="/admin/tour-schedule/edit/id/<?php echo $s['id'];?>">Sửa</a>
+                <a class="delete" href="/admin/tour-schedule/del/id/<?php echo $s['id'];?>">Xóa</a>
+            </td>
+        </tr>
+        <?php }?>
+        
+    </tbody>
+
+</table>
+<div id="deleteDialog" style="display:none">
+    <p>Bạn có chắc chắn muốn xóa không?</p>
+</div>
+<div style="margin-top: 20px;">
+    <a class="button" href="/admin/tour-schedule/add">Thêm lịch trình mới</a>
+</div>

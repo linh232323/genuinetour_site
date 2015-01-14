@@ -1,0 +1,32 @@
+
+<form action="#" method="post">
+
+    <fieldset> <!-- Set class to "column-left" or "column-right" on fieldsets to divide the form into columns -->
+
+        <p>
+            <label>Tên tài khoản</label>
+            <input class="text-input small-input" type="text" id="username" name="username" /> 
+            <br /><small>Tên tài khoản là tên đăng nhập vào hệ thống</small>
+        </p>
+
+        <p>
+            <label>Mật khẩu</label>
+            <input class="text-input small-input" type="password" id="password" name="password" />
+            <br />
+        </p>
+
+        <p>
+            <label>Lặp lại mật khẩu</label>
+            <input class="text-input small-input" type="password" id="repassword" name="repassword" /> 
+            <br />
+        </p>
+
+        <p>
+            <input class="button" name="save" type="submit" value="Tạo tài khoản" />
+        </p>
+
+    </fieldset>
+
+    <div class="clear"></div><!-- End .clear -->
+
+</form>

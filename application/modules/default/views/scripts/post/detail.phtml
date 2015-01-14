@@ -1,0 +1,29 @@
+<?php $t = $this->post; 
+$lang = $this->lang;
+$multi = $this->multilang; 
+?>
+
+<div class="left-group">
+    <div class="group-title"><h1><?php echo $t['title']; ?></h1></div>
+    <div class="group-content">
+        <div class="inner">
+            <p><?php echo $t['content']; ?></p>
+            <p><b class="Italic"><?php echo $multi['last_modify_label']['name'.$lang]." ".$t['last_modify']; ?></b></p>
+        </div>
+    </div>
+</div>
+
+<div class="left-group">
+    <div class="group-title"><h1><?php echo $multi['comment_label']['name'.$lang];?></h1></div>
+    <div class="group-content">
+        <div class="inner">
+        	<form method="post" action="/">
+        		<div><label for=""><?php echo $multi['name_label']['name'.$lang];?></label><input name="name" type="text"/></div>
+        		<div><label><?php echo $multi['email_label']['name'.$lang];?></label><input name="email" type="text"/></div>
+        		<div><label><?php echo $multi['comment_label']['name'.$lang];?></label><textarea name="comment"><?php echo $multi['comment_text']['name'.$lang];?></textarea></div>
+        		<div><input type="submit" value="<?php echo $multi['send_button']['name'.$lang];?>"/></div>
+        	</form>
+            
+        </div>
+    </div>
+</div>

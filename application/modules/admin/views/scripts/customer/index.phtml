@@ -1,0 +1,43 @@
+<table>
+
+    <thead>
+        <tr>
+            <th>Tài khoản</th>
+            <th>Họ tên</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Thao tác</th>
+       
+            
+        </tr>
+
+    </thead>
+
+    <tbody>
+        <?php 
+        $accounts = $this->accounts;
+  
+        foreach ($accounts as $a){
+        ?>
+        <tr>
+            <td><?php echo $a['username'];?></td>
+            <td><?php echo $a['name'];?></td>
+            <td><?php echo $a['email'];?></td>
+            <td><?php echo $a['phone'];?></td>
+            <td><a href='/admin/customer/edit/id/<?php echo $a['id']?>'>Sửa</a>
+            <a class="delete" href='/admin/customer/del/id/<?php echo $a['id']?>'>Xóa</a></td>
+        </tr>
+        <?php }?>       
+    </tbody>
+     <tfoot>
+    	<tr>
+    		<td colspan="6"><?php   echo $this->paginationControl($accounts, 'Sliding' , 'index/pagination.phtml'); ?></td>
+    	</tr>
+    </tfoot>
+</table>
+<div id="deleteDialog" style="display:none">
+    <p>Bạn có chắc chắn muốn xóa không?</p>
+</div>
+<div style="margin-top: 20px;">
+    <a class="button" href="/admin/customer/add">Thêm khách hàng mới</a>
+</div>

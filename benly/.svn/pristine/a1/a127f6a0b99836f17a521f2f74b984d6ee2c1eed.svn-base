@@ -1,0 +1,8 @@
+<div class="left-group">
+    <div class="group-title"><h1>Đặt Tour</h1></div>
+    <div class="group-content">
+        <div class="inner">
+            <?php echo $this->form->render();?>
+        </div>
+    </div>
+</div>

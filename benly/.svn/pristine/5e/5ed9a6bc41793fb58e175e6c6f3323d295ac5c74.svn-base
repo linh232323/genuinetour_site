@@ -1,0 +1,30 @@
+<table>
+
+    <thead>
+        <tr>
+            <th>Quốc tịch</th>
+            <th>Thao tác</th>
+            
+        </tr>
+
+    </thead>
+
+    <tbody>
+        <?php 
+        $accounts = $this->accounts;
+        foreach ($accounts as $a){
+        ?>
+        <tr>        
+          <td><?php echo $a['name'];?></td>         
+          <td><a href='/admin/nation/edit/id/<?php echo $a['id']?>'>Sửa</a>
+         <a class="delete" href='/admin/nation/del/id/<?php echo $a['id']?>'>Xóa</a></td>
+        </tr>
+        <?php  }?>       
+    </tbody>
+</table>
+<div id="deleteDialog" style="display:none">
+    <p>Bạn có chắc chắn muốn xóa không?</p>
+</div>
+<div style="margin-top: 20px;">
+    <a class="button" href="/admin/nation/add">Thêm Quốc tịch</a>
+</div>

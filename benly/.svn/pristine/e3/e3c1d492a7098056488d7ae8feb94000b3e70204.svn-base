@@ -1,0 +1,44 @@
+<table>
+    <thead>
+        <tr>
+            <th>Tiêu đề</th>
+            <th>Hình đại diện</th>
+            <th>Thao tác</th>
+            <th>Lấy Link</th>
+        </tr>
+
+    </thead>
+
+    <tbody>
+        <?php
+        $posts = $this->posts;
+        foreach ($posts as $p) {
+            ?>
+            <tr>
+                <td><?php echo $p['title']; ?></td>
+                <td><img src="<?php echo $p['thumbnail_url'];?>" style="width: 100px;"/></td>
+                <td>
+                    <a href="/admin/post/edit/id/<?php echo $p['id']; ?>">Sửa</a>
+                    <a class="delete" href="/admin/post/del/id/<?php echo $p['id']; ?>">Xóa</a>
+                </td>
+                	
+                <td>
+                	<a href="/post/detail/id/<?php echo $p['id']; ?>"><?php echo "Link ".$p['id']?></a>
+                </td>
+            </tr>
+
+        <?php } ?>
+
+    </tbody>
+    <tfoot>
+    	<tr>
+    		<td colspan="4"><?php   echo $this->paginationControl($posts, 'Sliding' , 'index/pagination.phtml'); ?></td>
+    	</tr>
+    </tfoot>
+</table>
+<div id="deleteDialog" style="display:none">
+    <p>Bạn có chắc chắn muốn xóa không?</p>
+</div>
+<div style="margin-top: 20px;">
+    <a class="button" href="/admin/post/add">Thêm bài viết mới</a>
+</div>

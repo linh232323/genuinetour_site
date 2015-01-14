@@ -1,0 +1,119 @@
+<?php $this->doctype(); ?>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+        <title>Benly Tourist</title>
+        <link rel="stylesheet" type="text/css" href="<?php echo $this->baseUrl . '/' . $this->module; ?>/css/main.css"/>
+        <script type="text/javascript" src="<?php echo $this->baseUrl . '/' . $this->module; ?>/js/jquery-1.8.2.min.js"></script>
+        <script type="text/javascript" src="<?php echo $this->baseUrl . '/' . $this->module; ?>/js/zrotat.js"></script>
+        <script type="text/javascript" src="<?php echo $this->baseUrl . '/' . $this->module; ?>/js/zsubmenu.js"></script>
+        <script type="text/javascript" src="<?php echo $this->baseUrl . '/' . $this->module; ?>/js/main.js"></script>
+
+        <script type="text/javascript">
+            $(document).ready(function(){
+                $(".nav-item").zsubmenu();
+                $("input[type=submit]").hover(function(){
+                    $(this).css("background-color","#06F");
+                    $(this).css("color","#FFF");
+                }, function(){
+                    $(this).css("background-color","#EEE");
+                    $(this).css("color","#666");
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <div id="wrapper">
+            <div id="header">
+                <div id="banner"></div>
+                <div id="navigation">
+                    <ul id="nav-bar">
+                        <li class="nav-first">
+                        </li>
+                        <li class="nav-content">
+                            <ul id="nav-content-wrapper">
+                                <?php
+                                $data = new Default_Model_Menu();
+                                $support = new Benly_Support();
+                                $support->menu($data->Menu_listall(), 0);
+                                ?>
+
+
+
+                            </ul>
+                        </li>
+                        <li class="nav-last">
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div id="main">
+                <div id="left">
+                    <div id="content">
+                        <?php echo $this->layout()->content; ?>
+                    </div>
+                </div>
+                <div id="right">
+                    <div class="right-group">
+                        <div class="group-title"><h1>Video</h1></div>
+                        <div class="group-content">
+                            <iframe width="255" height="200" src="http://www.youtube.com/embed/dKjClVnb5H0" frameborder="0" ></iframe>
+                        </div>
+
+                    </div>
+                    <div class="right-group">
+                        <div class="group-title"><h1>Search</h1></div>
+                        <div class="group-content">
+                            <div class="inner">
+                                <form action="/index/search/" method ="get">
+                                    <table>
+                                        <tr>
+                                            <td>Tên Tour</td>
+                                            <td><input type ="text" name="tour_name" /></td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td><input type ="submit" value="Tìm kiếm"/></td>
+                                        </tr>
+                                    </table>
+
+
+                                </form>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="right-group">
+                        <div class="group-title"><h1>Hỗ trợ trực tuyến</h1></div>
+
+                        <div class="group-content">
+                            <div class="inner-sub">
+                                <a href="ymsgr:sendIM?benlytourist" >
+                                    <img src="http://opi.yahoo.com/online?u=benlytourist&amp;m=g&amp;t=5" height="15" width="15" border="0" alt=" " />
+                                </a>
+                                <b>Nguyễn Thị Lan Hương</b>
+                            </div>
+                            <div class="inner-sub">
+                                <a href="ymsgr:sendIM?benlytourist" >
+                                    <img src="http://opi.yahoo.com/online?u=benlytourist&amp;m=g&amp;t=5" height="15" width="15" border="0" alt=" " />
+                                </a>
+                                <b>Benly Tourist Support</b>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+        <div id="footer-wrapper">
+            <div id="footer">
+                <p><b>Công Ty Cổ Phần Thương Mại Dịch Vụ Benly Tourist</b></p>
+                <p>7A/80, Thành Thái, Phường 14, Quận 10, TP.Hồ Chí Minh</p>
+                <p>Điện thoại: <b >(08)38.686.687 </b>ĐTDĐ: <b>0904.969.219</b></p>
+                <p>Fax: <b>(08)38.686.687</b></p>
+                <p>Email : </b> <a href="mailto:contact@benlytourist.com.vn"><b>Contact@benlytourist.com.vn</b></a></p>
+            </div>
+        </div>
+    </body>
+</html>

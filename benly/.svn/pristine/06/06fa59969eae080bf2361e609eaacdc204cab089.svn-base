@@ -1,0 +1,41 @@
+<table>
+
+    <thead>
+        <tr>
+            <th>Mã đơn hàng</th>
+            <th>Hạng phòng</th>
+            <th>01 giường đôi</th>
+            
+            <th>01 giường đơn + 01 giường đôi</th>
+            <th>02 giường đơn</th>
+            <th>02 giường đôi</th>
+            <th>Thao tác</th>
+            
+        </tr>
+
+    </thead>
+
+    <tbody>
+        <?php 
+        $accounts = $this->accounts;
+        foreach ($accounts as $a){
+        ?>
+        <tr>        
+          <td><?php echo $a['order_id'];?></td>    
+          <td><?php echo $a['room_category_room_cat_name'];?></td>     
+          <td><?php echo $a['num_1_0'];?></td>     
+          <td><?php echo $a['num_1_1'];?></td>     
+          <td><?php echo $a['num_2_0'];?></td>
+          <td><?php echo $a['num_0_2'];?></td>               
+          <td><a href='/admin/room-order/edit/ircat/<?php echo $a['room_cat_id']?>/orderid/<?php echo $a['order_id']?>'>Sửa</a>
+          <a class ="delete" href='/admin/room-order/del/ircat/<?php echo $a['room_cat_id']?>/orderid/<?php echo $a['order_id']?>'>Xóa</a></td>
+        </tr>
+        <?php  }?>       
+    </tbody>
+</table>
+<div id="deleteDialog" style="display:none">
+    <p>Bạn có chắc chắn muốn xóa không?</p>
+</div>
+<div style="margin-top: 20px;">
+    <a class="button" href="/admin/room-order/add">Đặt phòng</a>
+</div>

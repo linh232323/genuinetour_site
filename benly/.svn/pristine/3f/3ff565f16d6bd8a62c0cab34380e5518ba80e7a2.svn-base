@@ -1,0 +1,78 @@
+<?php
+$t = $this->tour; 
+$lang = $this->lang;
+$multi = $this->multilang;
+$schedule = new Default_Model_TourSchedule();
+?>
+<div class="left-group">
+    <div class="group-title"><h1><?php echo $multi['info_tour_label']['name'.$lang];?></h1></div>
+    <div class="group-content">
+        <div class="inner_left_detail">
+            <img src="<?php echo $t['thumbnail_url']; ?>" class="tour-thumb"/>
+        </div>
+        <div class="inner_right">
+            <h3><?php echo $t['name'.$lang]; ?></h3>
+			<div class="inner-content">
+                    <p><b><?php echo $multi['during_label']['name'.$lang];?>: </b><?php $night =  $t['during'];
+	                    if($night == floor($night)){
+							echo $night." ".$multi['day_label']['name'.$lang];
+						}else{
+							$night = floor($night);
+							$day = $night + 1;
+							echo $day." ".$multi['day_label']['name'.$lang]." ".$night." ".$multi['night_label']['name'.$lang];
+
+						}?></p>
+                    <p><b><?php echo $multi['outward_label']['name'.$lang];?>: </b><?php echo $t['transport_outward_name'.$lang]; ?></p>
+                    <p><b><?php echo $multi['return_label']['name'.$lang];?>: </b><?php echo $t['transport_return_name'.$lang]; ?></p>
+                    <p><b><?php echo $multi['price_label']['name'.$lang];?>: </b> <span class='currency'><?php echo $t['price'];  ?> </span></p>
+                    
+        	<br/>
+            <a href="/order/book/id/<?php echo $t['id'];?>" class="book"><?php echo $multi['book_button']['name'.$lang];?></a>
+            </div>
+            <div class="inner-content">
+            <?php
+                    $day = $schedule->TourSchedule_getByTourID_And_Time($t['id'],date ( "Y-m-d H:i:s" ));
+                     if(count($day)>=1){?><p><?php echo $multi['schedule_label']['name'.$lang];?>:<br/> <b>
+					  <?php 
+					    
+						
+						$time = array();
+						  foreach ($day as $d){
+						  	$timestamp =strtotime( $d['start_date']);
+						  	$time[date('Y',$timestamp)][date('m',$timestamp)][]= date('d',$timestamp);
+						  }
+					    echo "<ul>";
+					  	foreach($time as $y=>$yValue){
+						foreach ($time[$y] as $m => $mValue){	
+							echo "<li>";		
+							echo implode (" , ",$time[$y][$m]);						
+							echo" - $m - $y</li>";
+						}
+						
+					}echo "</ul>";?>
+					</b></p>
+					<?php }?>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="left-group-collapse">
+    <h3><?php echo $multi['detail_tour_label']['name'.$lang];?></h3>
+    <div class="group-content">
+        <div class="inner">
+            <?php echo $t['post_intro'.$lang]; ?>
+        </div>
+    </div>
+    <h3><?php echo $multi['route_label']['name'.$lang];?></h3>
+    <div class="group-content">
+        <div class="inner">
+            <?php echo $t['program'.$lang]; ?>
+        </div>
+    </div>
+    <h3><?php echo $multi['appendix_label']['name'.$lang];?></h3>
+    <div class="group-content">
+        <div class="inner">
+            <?php echo $t['appendix'.$lang]; ?>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,38 @@
+<table>
+
+    <thead>
+        <tr>
+        	<th>#</th>
+            <th>Tên mục(Tiếng Việt)</th>
+            <th>Tên mục(Tiếng Việt)</th>
+           
+            <th>Thao tác</th>
+          
+        </tr>
+
+    </thead>
+
+    <tbody>
+        <?php 
+        $postcats = $this->postcategories;
+      
+        
+        foreach ($postcats as $a){
+        ?>
+        <tr>
+       	  <td><?php echo $a['id'];?> </td>
+          <td><?php echo $a['name'];?> </td>
+          <td><?php echo $a['name_en'];?> </td>
+     
+          <td><a href='/admin/post-cat/edit/id/<?php echo $a['id']?>'>Sửa</a>
+          <a class="delete" href='/admin/post-cat/del/id/<?php echo $a['id']?>'>Xóa</a></td>
+        </tr>
+        <?php  }?>       
+    </tbody>
+</table>
+<div id="deleteDialog" style="display:none">
+    <p>Bạn có chắc chắn muốn xóa không?</p>
+</div>
+<div style="margin-top: 20px;">
+    <a class="button" href="/admin/post-cat/add">Thêm Mục</a>
+</div>

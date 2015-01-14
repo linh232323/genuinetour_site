@@ -1,0 +1,36 @@
+<?php
+$lang = $this->lang;
+$multi = $this->multilang; 
+?>
+<div class="left-group">
+    <div class="group-title"><h1><?php echo $multi['info_label']['name'.$lang];?></h1></div>
+    <div class="group-content">
+    <?php
+   
+    $posts = $this->posts;
+    if($posts){
+	    foreach ($posts as $t) {
+	        ?>
+	        <a href="/post/detail/id/<?php echo $t['id']; ?>">
+	            <div class="inner_left" >
+					<h3><?php echo $t['title']; ?></h3>	               
+	                    <img src="<?php echo $t['thumbnail_url']; ?>" class="tour-thumb"/>
+	                   	<div style="width:310px"><?php echo substr($t['description'],0,400)?></div>
+	                   	<p><b><?php echo $multi['read_more_label']['name'.$lang];?></b></p>
+	            </div>
+	        </a>
+	        <?php
+	    }
+	     
+    }
+    else
+	{
+    	echo "<div class='group-content'><div class='inner'><p>".$multi['error_3_label']['name'.$lang]."<p/></div></div>";
+    }
+
+    ?>
+    </div>
+    <div>
+    <?php echo $this->paginationControl($posts, 'Sliding' , 'tour/pagination.phtml');?>
+    </div>
+</div>

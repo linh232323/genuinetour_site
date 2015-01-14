@@ -1,0 +1,40 @@
+<div class="pagination" style="width:100%">
+   
+    <div style="float:right;width:70%;">
+        <!-- First page link -->
+        <?php if (isset($this->previous)): ?>
+              <a href="<?= $this->url(array('page' => $this->first)); ?>">Đầu</a> |
+        <?php else: ?>
+                <span class="disabled">Đầu</span> |
+        <?php endif; ?>
+    
+        <!-- Previous page link -->
+    
+        <?php if (isset($this->previous)): ?>
+              <a href="<?= $this->url(array('page' => $this->previous)); ?>">&lt; Trước</a> |
+        <?php else: ?>
+            <span class="disabled">&lt;  Trước</span> |
+        <?php endif; ?>
+        <!-- Numbered page links -->
+        <?php foreach ($this->pagesInRange as $page): ?>
+            <?php if ($page != $this->current): ?>
+                <a href="<?= $this->url(array('page' => $page)); ?>"><?= $page; ?></a>
+            <?php else: ?>
+                <?= $page; ?>
+            <?php endif; ?>
+        <?php endforeach; ?>
+        <!-- Next page link -->
+        <?php if (isset($this->next)): ?>
+              | <a href="<?= $this->url(array('page' => $this->next)); ?>">Sau &gt;</a> |
+        <?php else: ?>
+            | <span class="disabled">Sau &gt;</span> |
+        <?php endif; ?>
+        <!-- Last page link -->
+        <?php if (isset($this->next)): ?>
+              <a href="<?= $this->url(array('page' => $this->last)); ?>">Cuối</a>
+        <?php else: ?>
+            <span class="disabled">Cuối</span>
+        <?php endif; ?>
+        &nbsp; Page <?= $this->current; ?> / <?= $this->last; ?>
+    </div>
+ </div>

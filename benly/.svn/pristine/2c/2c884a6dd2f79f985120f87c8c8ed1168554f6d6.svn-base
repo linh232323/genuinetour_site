@@ -1,0 +1,37 @@
+<table>
+
+    <thead>
+        <tr>
+            <th>Hạng phòng(Tiếng Việt)</th>
+            <th>Hạng phòng(Tiếng Việt)</th>
+           
+            <th>Thao tác</th>
+          
+        </tr>
+
+    </thead>
+
+    <tbody>
+        <?php 
+        $accounts = $this->accounts;
+      
+        
+        foreach ($accounts as $a){
+        ?>
+        <tr>
+       
+          <td><?php echo $a['room_cat_name'];?> </td>
+          <td><?php echo $a['room_cat_name_en'];?> </td>
+     
+          <td><a href='/admin/room-cat/edit/id/<?php echo $a['id']?>'>Sửa</a>
+          <a class="delete" href='/admin/room-cat/del/id/<?php echo $a['id']?>'>Xóa</a></td>
+        </tr>
+        <?php  }?>       
+    </tbody>
+</table>
+<div id="deleteDialog" style="display:none">
+    <p>Bạn có chắc chắn muốn xóa không?</p>
+</div>
+<div style="margin-top: 20px;">
+    <a class="button" href="/admin/room-cat/add">Thêm Hạng phòng</a>
+</div>

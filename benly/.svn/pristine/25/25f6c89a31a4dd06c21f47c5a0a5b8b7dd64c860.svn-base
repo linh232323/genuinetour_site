@@ -1,0 +1,42 @@
+<table>
+    <thead>
+        <tr>
+            <th>ID Đơn tour</th>
+            <th>Họ tên</th>
+            <th>CMND/Passport</th>
+            <th>Quốc tịch</th>
+            <th>Tuổi</th>
+            <th>ĐT</th>
+        </tr>
+
+    </thead>
+
+    <tbody>
+        <?php
+        $travellers = $this->travellers;
+        foreach ($travellers as $p) {
+            ?>
+            <tr>
+                <td><?php echo $p['order_id']; ?></td>
+                <td><?php echo $p['name']; ?></td>
+                <td><?php echo $p['passport']; ?></td>
+                
+                <td><?php echo $p['nation_name']; ?></td>
+                 <td><?php echo $p['old_year']; ?></td>
+                 <td><?php echo $p['phone']; ?></td>
+                <td>
+                    <a href="/admin/traveller/edit/id/<?php echo $p['id']; ?>">Sửa</a>
+                    <a class="delete" href="/admin/traveller/del/id/<?php echo $p['id']; ?>">Xóa</a>
+                </td>
+            </tr>
+
+        <?php } ?>
+
+    </tbody>
+</table>
+<div id="deleteDialog" style="display:none">
+    <p>Bạn có chắc chắn muốn xóa không?</p>
+</div>
+<div style="margin-top: 20px;">
+    <a class="button" href="/admin/traveller/add">Thêm hành khách</a>
+</div>

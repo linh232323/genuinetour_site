@@ -1,0 +1,55 @@
+<table>
+
+    <thead>
+        <tr>
+        	<th>Mã tour</th>
+            <th>Tên tour</th>
+            <th>Thời gian</th>
+            <th>Phương tiện đi</th>
+            <th>Phương tiện về</th>
+            <th>Thao tác</th>
+        </tr>
+
+    </thead>
+
+    <tbody>
+        <?php
+        $tours = $this->tours;
+        foreach ($tours as $t) {
+            ?>
+            <tr>
+                <td><?php echo $t['code']; ?></td>
+                <td><?php echo $t['name']; ?></td>
+                <td><?php
+	                    $night =  $t['during'];
+	                    if($night == floor($night)){
+							echo "$night Ngày";
+						}else{
+							$night = floor($night);
+							$day = $night + 1;
+							echo "$day Ngày $night Đêm";
+
+						}?></td>
+                <td><?php echo $t['transport_outward_name']; ?></td>
+                <td><?php echo $t['transport_return_name']; ?></td>
+                <td>
+                    <a href="/admin/tour/edit/id/<?php echo $t['id']; ?>">Sửa</a>
+                    <a class="delete" href="/admin/tour/del/id/<?php echo $t['id']; ?>">Xóa</a>
+                </td>
+            </tr>
+        <?php } ?>
+
+    </tbody>
+    <tfoot>
+    	<tr>
+    		<td colspan="5"><?php   echo $this->paginationControl($tours, 'Sliding' , 'index/pagination.phtml'); ?></td>
+    	</tr>
+    </tfoot>
+
+</table>
+<div id="deleteDialog" style="display:none">
+    <p>Bạn có chắc chắn muốn xóa không?</p>
+</div>
+<div style="margin-top: 20px;">
+    <a class="button" href="/admin/tour/add">Thêm Tour mới</a>
+</div>

@@ -1,0 +1,164 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>Benly Admin</title>
+        <link rel="stylesheet" href="<?php echo $this->baseUrl . '/' . $this->module; ?>/css/reset.css" type="text/css" media="screen" />
+        <link rel="stylesheet" href="<?php echo $this->baseUrl . '/' . $this->module; ?>/css/style.css" type="text/css" media="screen" />
+        <link rel="stylesheet" href="<?php echo $this->baseUrl . '/' . $this->module; ?>/css/invalid.css" type="text/css" media="screen" />	
+        <link rel="stylesheet" href="<?php echo $this->baseUrl . '/' . $this->module; ?>/css/jquery-ui.css" type="text/css" media="screen" />
+        <link rel="stylesheet" href="<?php echo $this->baseUrl . '/' . $this->module; ?>/css/datepicker.css" type="text/css" media="screen" />
+        <script type="text/javascript" src="<?php echo $this->baseUrl . '/' . $this->module; ?>/js/jquery-1.8.2.min.js"></script>
+        <script type="text/javascript" src="<?php echo $this->baseUrl . '/' . $this->module; ?>/js/facebox.js"></script>
+        <script type="text/javascript" src="<?php echo $this->baseUrl . '/' . $this->module; ?>/js/jquery-ui.min.js"></script>
+        <!-- <script type="text/javascript" src="<?php echo $this->baseUrl; ?>/e/fckeditor.js"></script> -->
+        <script type="text/javascript" src="<?php echo $this->baseUrl; ?>/ckeditor/ckeditor.js"></script>
+        <script type="text/javascript" src="<?php echo $this->baseUrl; ?>/ckeditor/ckfinder/ckfinder.js"></script>
+        <script type="text/javascript" src="<?php echo $this->baseUrl . '/' . $this->module; ?>/js/datepicker.js"></script>
+        <script type="text/javascript" src="<?php echo $this->baseUrl . '/' . $this->module; ?>/js/main.js"></script>
+    </head>
+    <body><div id="body-wrapper"> <!-- Wrapper for the radial gradient background -->
+
+            <div id="sidebar"><div id="sidebar-wrapper"> <!-- Sidebar with logo and menu -->
+
+                    <h1 id="sidebar-title"><a href="#">Benly Admin</a></h1>
+
+                    <!-- Logo (221px wide) -->
+                    <a href="#"><img id="logo" src="<?php echo $this->baseUrl . '/' . $this->module; ?>/images/logo.png" alt="Benly Admin logo" /></a>
+
+                    <!-- Sidebar Profile links -->
+                    <div id="profile-links">
+                        <a href="#" title="Edit your profile"><?php echo $this->username;?></a>
+                        <br />
+                        <br />
+                        <a href="/" title="Về trang chủ">Về trang chủ</a> | <a href="/admin/auth/logout" title="Đăng xuất">Đăng xuất</a>
+                    </div>        
+
+                    <ul id="main-nav">  <!-- Accordion Menu -->
+
+                        <li>
+                            <a href="/admin/index/index" class="nav-top-item no-submenu <?php echo $this->generalCurrent;?>"> <!-- Add the class "no-submenu" to menu items with no sub menu -->
+                                Tổng quan
+                            </a>       
+                        </li>
+
+                        <li> 
+                            <a href="/admin/account/index" class="nav-top-item <?php echo $this->AccountCurrent;?>"> <!-- Add the class "current" to current menu item -->
+                                Quản lý tài khoản
+                            </a>
+                            <ul>
+                                <li><a class="<?php echo $this->indexAccountCurrent;?>" href="/admin/account/index">Xem tất cả tài khoản</a></li>
+                                <li><a class="<?php echo $this->addAccountCurrent;?>" href="/admin/account/add">Thêm tài khoản mới</a></li> 
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a href="#" class="nav-top-item <?php echo $this->tourCurrent;?>">
+                                Quản lý Tour
+                            </a>
+                            <ul>
+                                <li><a class="<?php echo $this->addTourCurrent;?>" href="/admin/tour/index">Thông tin Tour</a></li>
+                                <li><a href="/admin/tour-category/index">Tiêu chuẩn Tour</a></li>
+                                <li><a href="/admin/tour-schedule/index">Lịch khởi hành</a></li>
+                                <li><a href="/admin/tour-price/index">Giá Tour</a></li>
+                                <li><a href="/admin/trans-detail/index">Giá Phương tiện</a></li>
+                                <li><a href="/admin/tour-section/index">Phân loại Tour</a></li>                              
+                            </ul>
+                        </li>
+                        
+                        <li>
+                            <a href="#" class="nav-top-item">
+                                Quản lý đơn đặt tour
+                            </a>
+                            <ul>
+                                <li><a href="/admin/order/index">Thông tin đặt tour</a></li>
+                            </ul>
+                        </li>
+                        
+                        <li>
+                            <a href="/admin/transport/index" class="nav-top-item">
+                                Quản lý phương tiện
+                            </a>
+                            <ul>
+                                <li><a href="/admin/transport/index">Các loại phương tiện</a></li>
+                               
+                                <li><a href="#">Thông tin phương tiện</a></li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a href="/admin/customer/index" class="nav-top-item">
+                                Quản lý khách hàng
+                            </a>
+                            <ul>
+                                <li><a href="#">Thông tin tài khoản khách hàng</a></li>
+                                <li><a href="/admin/customer/index">Danh sách hành khách</a></li>
+                                <li><a href="/admin/nation/index">Danh sách quốc tịch</a></li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a href="#" class="nav-top-item">
+                                Quản lý nội dung
+                            </a>
+                            <ul>
+                                <li><a href="/admin/post/index <?php echo $this->postCurrent;?>">Bài viết</a></li>
+                                <li><a href="/admin/post-cat/index">Mục bài viết</a></li>
+                                <li><a href="#">Tin tức - Thông báo</a></li>
+                                 
+                            </ul>
+                        </li>   
+                         <li>
+                            <a href="#" class="nav-top-item">
+                                Component
+                            </a>
+                            <ul>
+                                <li><a href="/admin/menu/index <?php echo $this->postCurrent;?>">Menu</a></li>
+                                <li><a href="/admin/ad/index <?php echo $this->postCurrent;?>">Đa ngôn ngữ - Block</a></li>
+                                <li><a href="/admin/ad/manage <?php echo $this->postCurrent;?>">Quản lý file</a></li>
+		                   </ul>
+                        </li>      
+
+                    </ul> <!-- End #main-nav -->
+
+                </div></div> <!-- End #sidebar -->
+
+            <div id="main-content"> <!-- Main Content Section with everything -->
+
+                <noscript> <!-- Show a notification if the user has disabled javascript -->
+                    <div class="notification error png_bg">
+                        <div>
+                            Bạn đã tắt hoặc trình duyệt của bạn không hỗ trợ Javascript. Vui lòng nâng cấp trình duyệt hoặc bật Javascript để các chức năng giao diện có thể hoạt động chính xác.
+                        </div>
+                    </div>
+                </noscript>
+
+                <!-- Page Head -->
+                <h2><?php echo $this->title; ?></h2>
+                
+
+                <div class="content-box"><!-- Start Content Box -->
+                    <div class="content-box-header">
+
+                        <h3><?php echo $this->intro; ?></h3>
+
+                    </div> <!-- End .content-box-header -->
+
+                    <div class="content-box-content">
+                        <?php echo $this->layout()->content; ?>
+                    </div>
+                </div> <!-- End .content-box -->
+
+
+
+
+                <div id="footer">
+                    <small> <!-- Remove this notice or replace it with whatever you want -->
+                        &#169; Copyright 2012 Benly Tour
+                    </small>
+                </div><!-- End #footer -->
+
+            </div> <!-- End #main-content -->
+        </div></body>
+</html>

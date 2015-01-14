@@ -1,0 +1,13 @@
+<form method="get" action="/order/test">
+	<input type="checkbox" value="1" name="trans[]"/>
+	<input type="checkbox"  value="2" name="trans[]"/>
+	<input  type="checkbox" value="3" name="trans[]"/>
+	<input  type="checkbox" value="4" name="trans[]"/>
+	<input type="submit" value="OK"/>
+</form>
+<?php 
+$value = file_get_contents("");
+	$a = array(
+"name"=>$value);
+echo json_encode($a);
+?>
