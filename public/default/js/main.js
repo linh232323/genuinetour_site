@@ -13,7 +13,7 @@ $(document).ready(function(){
         $(this).css("border","#CCC solid 1px").css("background","none");
     });
     $(".nav-item").hover(function(){
-        $(this).css("background","#CCFF33");
+        $(this).css("background","rgb(161, 228, 255)");
         $(this).children().css("color","#000");
     }, function(){
         $(this).css("background","none");

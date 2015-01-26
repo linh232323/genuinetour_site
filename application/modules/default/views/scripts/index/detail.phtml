@@ -11,9 +11,9 @@ $schedule = new Default_Model_TourSchedule();
             <img src="<?php echo $t['thumbnail_url']; ?>" class="tour-thumb"/>
         </div>
         <div class="inner_right">
-            <h3><?php echo $t['name'.$lang]; ?></h3>
+            <h3><?php echo $t['name_'.$lang]; ?></h3>
 			<div class="inner-content">
-                    <p><b><?php echo $multi['during_label']['name'.$lang];?>: </b><?php $night =  $t['during'];
+                    <p><b><?php echo $multi['during_label']['name'.$lang];?>: </b><?php $night =  $t['during_' . $lang];
 	                    if($night == floor($night)){
 							echo $night." ".$multi['day_label']['name'.$lang];
 						}else{
@@ -22,8 +22,8 @@ $schedule = new Default_Model_TourSchedule();
 							echo $day." ".$multi['day_label']['name'.$lang]." ".$night." ".$multi['night_label']['name'.$lang];
 
 						}?></p>
-                    <p><b><?php echo $multi['outward_label']['name'.$lang];?>: </b><?php echo $t['transport_outward_name'.$lang]; ?></p>
-                    <p><b><?php echo $multi['return_label']['name'.$lang];?>: </b><?php echo $t['transport_return_name'.$lang]; ?></p>
+                    <p><b><?php echo $multi['outward_label']['name'.$lang];?>: </b><?php echo $t['transport_outward_name_'.$lang]; ?></p>
+                    <p><b><?php echo $multi['return_label']['name'.$lang];?>: </b><?php echo $t['transport_return_name_'.$lang]; ?></p>
                     <p><b><?php echo $multi['price_label']['name'.$lang];?>: </b> <span class='currency'><?php echo $t['price'];  ?> </span></p>
                     
         	<br/>
@@ -60,19 +60,19 @@ $schedule = new Default_Model_TourSchedule();
     <h3><?php echo $multi['detail_tour_label']['name'.$lang];?></h3>
     <div class="group-content">
         <div class="inner">
-            <?php echo $t['post_intro'.$lang]; ?>
+            <?php echo $t['post_intro_'.$lang]; ?>
         </div>
     </div>
     <h3><?php echo $multi['route_label']['name'.$lang];?></h3>
     <div class="group-content">
         <div class="inner">
-            <?php echo $t['program'.$lang]; ?>
+            <?php echo $t['program_'.$lang]; ?>
         </div>
     </div>
     <h3><?php echo $multi['appendix_label']['name'.$lang];?></h3>
     <div class="group-content">
         <div class="inner">
-            <?php echo $t['appendix'.$lang]; ?>
+            <?php echo $t['appendix_'.$lang]; ?>
         </div>
     </div>
 </div>

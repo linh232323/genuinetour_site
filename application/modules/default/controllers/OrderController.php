@@ -188,7 +188,7 @@ class Default_OrderController extends Benly_DefaultController {
 			$tourScheduel = new Default_Model_TourSchedule ();
 			$tour_id = $this->_request->getParam ( "id" );
 			if ($tour_id) {
-				$this->view->tour = $tourModel->TourIntro_getById ( $tour_id );
+				$this->view->tour = $tourModel->load ( $tour_id );
 				$this->view->tour_cat = $tourPriceModel->TourPrice_getByTour ( $tour_id );
 				$this->view->nation = $nationModel->Nation_listall ();
 				$this->view->transport = $tranDetailModel->TransportDetail_getByTourId ( $tour_id );
