@@ -1,317 +1,318 @@
-﻿<?php 
+﻿<?php
 $tour = $this->tour;
-$nation = $this->nation; 
+$nation = $this->nation;
 $tour_cat = $this->tour_cat;
 $schedule = $this->tour_schedule;
 $lang = $this->lang;
 $multi = $this->multilang;
-if($tour && $tour_cat && $schedule){
-?>
-<form action="/order/book" method="post" id="bookForm">
-    <div class="left-group">
-        <div class="group-title"><h1><?php echo $multi['info_tour_label']['name'.$lang];?></h1></div>
-        <div class="group-content">
-            <div class="inner">
-                <input type="hidden" name="tour_id" value="<?php echo $tour['id']; ?>" id='tour_id'/>
-                <input type="hidden" name="num_pas" value="1"/>
-               
-                <table>
-                	<tr>
-                		<td><b><?php echo $multi['tour_name_label']['name'.$lang];?></b></td>
-                		<td><h1><?php echo $tour['name'.$lang];?></h1></td>
-                		<td rowspan='3' id='total_price' width="300px"></td>
-                	</tr>
-                	
-                	<tr>
-                		<td><b><?php echo $multi['tour_cat_label']['name'.$lang];?>:</b></td>
-                		<td>
-	                		<select name="tour_cat_id">
-		                    <?php 
-		                    	
-		                    foreach ($tour_cat as $t) { ?>
-		                    <option value="<?php echo $t['tour_cat_id'];?>"><?php echo $t['tour_category_name'.$lang];?></option>
-		                    <?php } ?>
-		                	</select>
-                		</td>
-                	</tr>
-                	<tr>
-                		<td><b><?php echo $multi['schedule_label']['name'.$lang];?></b></td>
-                		<td>
-                			<select name="date">
-                			<?php foreach($schedule as $s){
-                				echo "<option value='".$s['start_date']."'>".date("d-m-Y",strtotime($s['start_date']))."</option>";
-                			}?>
-                			</select>
-	                		
-                		</td>
-                	</tr>
-                </table>
-              
-            </div>
-        </div>
-       
-    </div>
-    <div class="left-group" id="1">
-    	<div class="group-title"><h1><?php echo $multi['instruction_label']['name'.$lang];?></h1></div>
-    	 <div class="group-content">
-            <div class="inner">
-	    		<?php echo file_get_contents(APPLICATION_PATH."/configs/tutorial".$lang.".html");?>
-		    </div>
-	    </div>
-	     <div class="group-content">
-		     <div class="inner">
-	    		<a class="previous" href="#"><?php echo $multi['previous_button']['name'.$lang];?></a><a class="next" href="#" ><?php echo $multi['next_button']['name'.$lang];?></a>
-	    	</div>
-    	</div>
-    	
-    </div>
-    <div class ="left-group" id="2">
-    <div class="group-title"><h1><?php echo $multi['list_travellers_label']['name'.$lang];?></h1></div>
-        <div class="group-content">
-            <div class="inner">
-                <table>
-                    <thead>
-                        <tr>
-                            <th><?php echo $multi['name_label']['name'.$lang];?></th>
-                            <th><?php echo $multi['sex_label']['name'.$lang];?></th>
-                            <th><?php echo $multi['age_label']['name'.$lang];?></th>
-                            <th><?php echo $multi['nationality_label']['name'.$lang];?></th>
-                            <th><?php echo $multi['passport_label']['name'.$lang];?></th>
-                            <th></th>
-                        </tr>
-                    </thead>
+if ($tour && $tour_cat && $schedule) {
+    ?>
+    <form action="/order/book" method="post" id="bookForm">
+        <div class="left-group">
+            <div class="group-title"><h1><?php echo $multi['info_tour_label']['name' . $lang]; ?></h1></div>
+            <div class="group-content">
+                <div class="inner">
+                    <input type="hidden" name="tour_id" value="<?php echo $tour['id']; ?>" id='tour_id'/>
+                    <input type="hidden" name="num_pas" value="1"/>
 
-                    <tbody>
+                    <table>
                         <tr>
+                            <td><b><?php echo $multi['tour_name_label']['name' . $lang]; ?></b></td>
+                            <td><h1><?php echo $tour['name' . $lang]; ?></h1></td>
+                            <td rowspan='3' id='total_price' width="300px"></td>
+                        </tr>
+
+                        <tr>
+                            <td><b><?php echo $multi['tour_cat_label']['name' . $lang]; ?>:</b></td>
                             <td>
-                                <input type="text" name="pas_name[]"/>
-                            </td>
-                            <td>
-                                <select  name="pas_gender[]" style="width: 70px">
-                                    <option value="Nam"><?php echo $multi['male_label']['name'.$lang];?></option>
-                                    <option value="Nu"><?php echo $multi['female_label']['name'.$lang];?></option>
-                                </select>
-                            </td>
-                            <td>
-                                <input class='pas_age' type="text" name="pas_age[]" style="width: 50px" value="0"/>
-                            </td>
-                            <td>
-                                <select class='pas_nation' name="pas_nation[]"  style="width: 150px">
-                                    <?php foreach ($nation as $n) { ?>
-                                        <option value="<?php echo $n['id']; ?>"><?php echo $n['name']; ?></option>
+                                <select name="tour_cat_id">
+                                    <?php foreach ($tour_cat as $t) { ?>
+                                        <option value="<?php echo $t['tour_cat_id']; ?>"><?php echo $t['tour_category_name' . $lang]; ?></option>
                                     <?php } ?>
                                 </select>
                             </td>
+                        </tr>
+                        <tr>
+                            <td><b><?php echo $multi['schedule_label']['name' . $lang]; ?></b></td>
                             <td>
-                                <input type="text" name="pas_cid[]"/>
-                            </td>
-                            <td>
-                                <a href="#" class="remove"><?php echo $multi['del_button']['name'.$lang];?></a>
+                                <select name="date">
+    <?php
+    foreach ($schedule as $s) {
+        echo "<option value='" . $s['start_date'] . "'>" . date("d-m-Y", strtotime($s['start_date'])) . "</option>";
+    }
+    ?>
+                                </select>
+
                             </td>
                         </tr>
-                    </tbody>
-                </table>
-                <a href="#" class="add"><?php echo $multi['add_button']['name'.$lang];?></a>
+                    </table>
+
+                </div>
+            </div>
+
+        </div>
+        <div class="left-group" id="1">
+            <div class="group-title"><h1><?php echo $multi['instruction_label']['name' . $lang]; ?></h1></div>
+            <div class="group-content">
+                <div class="inner">
+                    <?php echo file_get_contents(APPLICATION_PATH . "/configs/tutorial" . $lang . ".html"); ?>
+                </div>
+            </div>
+            <div class="group-content">
+                <div class="inner">
+                    <a class="previous" href="#"><?php echo $multi['previous_button']['name' . $lang]; ?></a><a class="next" href="#" ><?php echo $multi['next_button']['name' . $lang]; ?></a>
+                </div>
+            </div>
+
+        </div>
+        <div class ="left-group" id="2">
+            <div class="group-title"><h1><?php echo $multi['list_travellers_label']['name' . $lang]; ?></h1></div>
+            <div class="group-content">
+                <div class="inner">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th><?php echo $multi['name_label']['name' . $lang]; ?></th>
+                                <th><?php echo $multi['sex_label']['name' . $lang]; ?></th>
+                                <th><?php echo $multi['age_label']['name' . $lang]; ?></th>
+                                <th><?php echo $multi['nationality_label']['name' . $lang]; ?></th>
+                                <th><?php echo $multi['passport_label']['name' . $lang]; ?></th>
+                                <th></th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <input type="text" name="pas_name[]"/>
+                                </td>
+                                <td>
+                                    <select  name="pas_gender[]" style="width: 70px">
+                                        <option value="Nam"><?php echo $multi['male_label']['name' . $lang]; ?></option>
+                                        <option value="Nu"><?php echo $multi['female_label']['name' . $lang]; ?></option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <input class='pas_age' type="text" name="pas_age[]" style="width: 50px" value="0"/>
+                                </td>
+                                <td>
+                                    <select class='pas_nation' name="pas_nation[]"  style="width: 150px">
+                                        <?php foreach ($nation as $n) { ?>
+                                            <option value="<?php echo $n['id']; ?>"><?php echo $n['name']; ?></option>
+                                        <?php } ?>
+                                    </select>
+                                </td>
+                                <td>
+                                    <input type="text" name="pas_cid[]"/>
+                                </td>
+                                <td>
+                                    <a href="#" class="remove"><?php echo $multi['del_button']['name' . $lang]; ?></a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <a href="#" class="add"><?php echo $multi['add_button']['name' . $lang]; ?></a>
+                </div>
+            </div>
+            <div class="group-content">
+                <div class="inner">
+                    <a class="previous" href="#"><?php echo $multi['previous_button']['name' . $lang]; ?></a><a class="next" href="#" ><?php echo $multi['next_button']['name' . $lang]; ?></a>
+                </div>
             </div>
         </div>
-         <div class="group-content">
-            <div class="inner">
-        		<a class="previous" href="#"><?php echo $multi['previous_button']['name'.$lang];?></a><a class="next" href="#" ><?php echo $multi['next_button']['name'.$lang];?></a>
-        	</div>
-        </div>
-    </div>
-	
-    <div class="left-group" id="3">
-    <?php if($this->transport){?>
-    	<div class="group-title"><h1><?php echo $multi['transport_label']['name'.$lang];?></h1></div>
-    	<div class="group-content">
-    		<div class="inner">
-    			<?php 
-        						echo "<table>";
-	                			foreach ($this->transport as $trans){
-										echo "<tr>";
-	                					echo"<td>".$trans['transport_name'.$lang]."</td><td><input type='checkbox' name='trans[]' class='trans' value='".$trans['id']."' checked='true'/>"."</td><td>".$trans['price']." VND</td>";
-										echo "</tr>";
-	                			}
-	                			echo "</table>";
-								echo "<p>".$multi['transport_description']['name'.$lang]."</p>";						
-                			?>
-    		</div>
-    	</div>
-	<?php }?>
-        <div class="group-title"><h1><?php echo $multi['book_detail_label']['name'.$lang];?></h1></div>
-        <div class="group-content">
-            <div class="inner">
-                <table>
-                	<tr>
-	                	<td>
-		                	<label for="room_1_0"><?php echo $multi['1twin_label']['name'.$lang];?></label>
-		                	<select id='room_1_0' name="room_1_0" style="width: 80px">
-			                    <option value="0">0</option>
-			                    <option value="1">1</option>
-			                    <option value="2">2</option>
-			                    <option value="3">3</option>
-			                    <option value="4">4</option>
-			                    <option value="5">5</option>
-			                    <option value="6">6</option>
-			                    <option value="7">7</option>
-			                    <option value="8">8</option>
-			                    <option value="9">9</option>
-			                    <option value="10">10</option>
-		                	</select>
-		                </td>
-	                	<td>
-	                		<label for="room_0_2"><?php echo $multi['2bed_label']['name'.$lang];?></label>
-			                <select id='room_0_2' name="room_0_2" style="width: 80px">
-			                    <option value="0">0</option>
-			                    <option value="1">1</option>
-			                    <option value="2">2</option>
-			                    <option value="3">3</option>
-			                    <option value="4">4</option>
-			                    <option value="5">5</option>
-			                    <option value="6">6</option>
-			                    <option value="7">7</option>
-			                    <option value="8">8</option>
-			                    <option value="9">9</option>
-			                    <option value="10">10</option>
-			                </select>
-	                	</td>
-                	</tr>
-                	<tr>
-                		<td>
-	                		<label for="room_1_1"><?php echo $multi['1t_1b_label']['name'.$lang];?></label>                
-			                <select  id='room_1_1' name="room_1_1" style="width: 80px">
-			                    <option value="0">0</option>
-			                    <option value="1">1</option>
-			                    <option value="2">2</option>
-			                    <option value="3">3</option>
-			                    <option value="4">4</option>
-			                    <option value="5">5</option>
-			                    <option value="6">6</option>
-			                    <option value="7">7</option>
-			                    <option value="8">8</option>
-			                    <option value="9">9</option>
-			                    <option value="10">10</option>
-			                </select>
-		                </td>
-		                <td>
-					        <label for="room_2_0"><?php echo $multi['2twin_label']['name'.$lang];?></label>
-			                <select  id='room_2_0' name="room_2_0" style="width: 80px">
-			                    <option value="0">0</option>
-			                    <option value="1">1</option>
-			                    <option value="2">2</option>
-			                    <option value="3">3</option>
-			                    <option value="4">4</option>
-			                    <option value="5">5</option>
-			                    <option value="6">6</option>
-			                    <option value="7">7</option>
-			                    <option value="8">8</option>
-			                    <option value="9">9</option>
-			                    <option value="10">10</option>
-			                </select>
-		                </td>
-		               
-                	</tr>
-                	<tr>
-                		<td>
-			                <label for="chay">Chay</label>
-			                <select name="chay" style="width: 80px">
-				                    <option value="0">0</option>
-				                    <option value="1">1</option>
-				                    <option value="2">2</option>
-				                    <option value="3">3</option>
-				                    <option value="4">4</option>
-				                    <option value="5">5</option>
-				                    <option value="6">6</option>
-				                    <option value="7">7</option>
-				                    <option value="8">8</option>
-				                    <option value="9">9</option>
-				                    <option value="10">10</option>
-				            </select>
-		                </td>
-		                 <td>
-			                <label for="man">Mặn</label>
-			                <select name="man" style="width: 80px">
-				                    <option value="0">0</option>
-				                    <option value="1">1</option>
-				                    <option value="2">2</option>
-				                    <option value="3">3</option>
-				                    <option value="4">4</option>
-				                    <option value="5">5</option>
-				                    <option value="6">6</option>
-				                    <option value="7">7</option>
-				                    <option value="8">8</option>
-				                    <option value="9">9</option>
-				                    <option value="10">10</option>
-				             </select>
-		                </td>
-                	</tr>
-                </table>                         
+
+        <div class="left-group" id="3">
+            <?php if ($this->transport) { ?>
+                <div class="group-title"><h1><?php echo $multi['transport_label']['name' . $lang]; ?></h1></div>
+                <div class="group-content">
+                    <div class="inner">
+                        <?php
+                        echo "<table>";
+                        foreach ($this->transport as $trans) {
+                            echo "<tr>";
+                            echo"<td>" . $trans['transport_name' . $lang] . "</td><td><input type='checkbox' name='trans[]' class='trans' value='" . $trans['id'] . "' checked='true'/>" . "</td><td>" . $trans['price'] . " VND</td>";
+                            echo "</tr>";
+                        }
+                        echo "</table>";
+                        echo "<p>" . $multi['transport_description']['name' . $lang] . "</p>";
+                        ?>
+                    </div>
+                </div>
+            <?php } ?>
+            <div class="group-title"><h1><?php echo $multi['book_detail_label']['name' . $lang]; ?></h1></div>
+            <div class="group-content">
+                <div class="inner">
+                    <table>
+                        <tr>
+                            <td>
+                                <label for="room_1_0"><?php echo $multi['1twin_label']['name' . $lang]; ?></label>
+                                <select id='room_1_0' name="room_1_0" style="width: 80px">
+                                    <option value="0">0</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10">10</option>
+                                </select>
+                            </td>
+                            <td>
+                                <label for="room_0_2"><?php echo $multi['2bed_label']['name' . $lang]; ?></label>
+                                <select id='room_0_2' name="room_0_2" style="width: 80px">
+                                    <option value="0">0</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10">10</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="room_1_1"><?php echo $multi['1t_1b_label']['name' . $lang]; ?></label>                
+                                <select  id='room_1_1' name="room_1_1" style="width: 80px">
+                                    <option value="0">0</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10">10</option>
+                                </select>
+                            </td>
+                            <td>
+                                <label for="room_2_0"><?php echo $multi['2twin_label']['name' . $lang]; ?></label>
+                                <select  id='room_2_0' name="room_2_0" style="width: 80px">
+                                    <option value="0">0</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10">10</option>
+                                </select>
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="chay">Chay</label>
+                                <select name="chay" style="width: 80px">
+                                    <option value="0">0</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10">10</option>
+                                </select>
+                            </td>
+                            <td>
+                                <label for="man">Mặn</label>
+                                <select name="man" style="width: 80px">
+                                    <option value="0">0</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10">10</option>
+                                </select>
+                            </td>
+                        </tr>
+                    </table>                         
+                </div>
+            </div>
+            <div class="group-content">
+                <div class="inner">
+                    <a class="previous" href="#"><?php echo $multi['previous_button']['name' . $lang]; ?></a><a class="next" href="#" ><?php echo $multi['next_button']['name' . $lang]; ?></a>
+                </div>
+
             </div>
         </div>
-         <div class="group-content">
-         	<div class="inner">
-         		<a class="previous" href="#"><?php echo $multi['previous_button']['name'.$lang];?></a><a class="next" href="#" ><?php echo $multi['next_button']['name'.$lang];?></a>
-         	</div>
-       		
-       	 </div>
-    </div>
-    <div class="left-group" id ="4">
-    	 <div class="group-title"><h1><?php echo $multi['user_label']['name'.$lang];?></h1></div>
-    	 <div class="group-content">
-            <div class="inner">
-            	
-                <p class="error"><?php echo $this->error; ?></p>
-                <label for="name"><?php echo $multi['name_label']['name'.$lang];?></label>
-                <input type="text" name="name"/>
-                <label for="phone"><?php echo $multi['phone_label']['name'.$lang];?></label>
-                <input type="text" name="phone"/>
-                <label for="email"><?php echo $multi['email_label']['name'.$lang];?></label>
-                <input type="text" name="email"/>
-                
-               
-                <label for="description"><?php echo $multi['request_label']['name'.$lang];?></label>
-                <textarea rows="3" cols="75" name="description"></textarea>
+        <div class="left-group" id ="4">
+            <div class="group-title"><h1><?php echo $multi['user_label']['name' . $lang]; ?></h1></div>
+            <div class="group-content">
+                <div class="inner">
+
+                    <p class="error"><?php echo $this->error; ?></p>
+                    <label for="name"><?php echo $multi['name_label']['name' . $lang]; ?></label>
+                    <input type="text" name="name"/>
+                    <label for="phone"><?php echo $multi['phone_label']['name' . $lang]; ?></label>
+                    <input type="text" name="phone"/>
+                    <label for="email"><?php echo $multi['email_label']['name' . $lang]; ?></label>
+                    <input type="text" name="email"/>
+
+
+                    <label for="description"><?php echo $multi['request_label']['name' . $lang]; ?></label>
+                    <textarea rows="3" cols="75" name="description"></textarea>
+                </div>
+            </div>
+            <div class="group-content">
+                <div class="inner">
+
+                    <a class="previous" href="#"><?php echo $multi['previous_button']['name' . $lang]; ?></a><a class="next" href="#" ><?php echo $multi['next_button']['name' . $lang]; ?></a>
+                </div>
             </div>
         </div>
-        <div class="group-content">
-        	<div class="inner">
-        	
-        		<a class="previous" href="#"><?php echo $multi['previous_button']['name'.$lang];?></a><a class="next" href="#" ><?php echo $multi['next_button']['name'.$lang];?></a>
-        	</div>
+        <div class="left-group" id ="5">
+            <div class="group-title"><h1><?php echo $multi['payments_label']['name' . $lang]; ?></h1></div>
+            <div class="group-content">      
+                <div class="inner">
+                    <table>
+                        <tr>
+                            <td><input type="radio" name="payment" value="1" checked="checked"/></td>
+                            <td><img src="https://www.nganluong.vn/data/images/buttons/3.gif"  border="0" /></td>
+                        </tr>
+                        <tr>
+                            <td><input type="radio" name="payment" value="2"/></td>
+                            <td>Thanh toán trực tiếp</td>        				
+                        </tr>
+                    </table>
+
+                </div>
+            </div>
+            <div class="group-content">
+                <div class="inner">
+
+                    <a class="previous" href="#"><?php echo $multi['previous_button']['name' . $lang]; ?></a><input type="submit" name="book" value="<?php echo $multi['payment_button']['name' . $lang]; ?>"/>
+                </div>
+            </div>
         </div>
-    </div>
-     <div class="left-group" id ="5">
-      <div class="group-title"><h1><?php echo $multi['payments_label']['name'.$lang];?></h1></div>
-      	<div class="group-content">      
-        	<div class="inner">
-        		<table>
-        			<tr>
-        				<td><input type="radio" name="payment" value="1" checked="checked"/></td>
-        				<td><img src="https://www.nganluong.vn/data/images/buttons/3.gif"  border="0" /></td>
-        			</tr>
-        			<tr>
-        				<td><input type="radio" name="payment" value="2"/></td>
-        				<td>Thanh toán trực tiếp</td>        				
-        			</tr>
-        		</table>
-        	
-        	</div>
+
+    </form>
+<?php } else { ?>
+    <div class='group-content'>
+        <div class='inner'>
+            <p><?php echo $multi['error_1_label']['name' . $lang]; ?></p>
+
         </div>
-      <div class="group-content">
-        	<div class="inner">
-        	
-        		<a class="previous" href="#"><?php echo $multi['previous_button']['name'.$lang];?></a><input type="submit" name="book" value="<?php echo $multi['payment_button']['name'.$lang];?>"/>
-        	</div>
-        </div>
-     </div>
-   
-</form>
-<?php }else{?>
-<div class='group-content'>
-	<div class='inner'>
-		<p><?php echo $multi['error_1_label']['name'.$lang];?></p>
-		
-	</div>
-</div> 
-<?php }?>
+    </div> 
+<?php
+}?>

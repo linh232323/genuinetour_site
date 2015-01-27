@@ -19,7 +19,7 @@ class Default_AccountController extends Benly_DefaultAuthController {
     	$id = $this->_request->getParam("id",null);
     	if(isset($id)){
 	    	$model = new Default_Model_Order();
-	    	$order = $model->Order_getById($id);
+	    	$order = $model->load($id);
 	    	$this->view->order = $order;
     	}
     }

@@ -85,7 +85,7 @@ class Default_OrderController extends Benly_DefaultController {
 
             $travellers = $travellerModel->Traveller_getByOrderId($orderId);
 
-            $data = $orderModel->Order_getById($orderId);
+            $data = $orderModel->load($orderId);
 
             $calculate = $this->Calculate_Order($travellers, $transports, $tour_id, $tour_cat_id, $room_1_0, $room_0_2, $room_1_1, $room_2_0);
 
@@ -144,7 +144,7 @@ class Default_OrderController extends Benly_DefaultController {
             $orderModel->setNum_2_12_Children($num_2_12_children);
             $orderModel->setDescription($body);
 
-            $result = $orderModel->Order_update();
+            $result = $orderModel->save();
             $customerModel->setUser_Name(hash("adler32", $orderId . "ORDER"));
             $customerModel->setPassword("123");
             $customerModel->CustomerAccount_update();
@@ -394,7 +394,7 @@ class Default_OrderController extends Benly_DefaultController {
 
         if ($result) {
             $order = new Default_Model_Order ();
-            $order->Order_getById($order_id);
+            $order->load($order_id);
             if ($order->getTotal() == $price) {
                 if ($payment_type == 1) {
                     $order->setStatus("Thanh toán hoàn tất");
@@ -404,7 +404,7 @@ class Default_OrderController extends Benly_DefaultController {
                 }
                 $this->view->show = "Thanh toán thành công. Chúng tôi sẽ liên hệ bạn trong thời gian sớm nhất.";
 
-                if ($order->Order_update()) {
+                if ($order->save()) {
                     $pw = hash("adler32", $order_id . "ORDER");
                     $this->view->show = "<p>Thanh toán thành công. Chúng tôi sẽ liên hệ bạn trong thời gian sớm nhất.</p><p>Để xem tình trạng hóa đơn, bạn có thể truy cập vào trang <a href='/auth/login'>Xem chi tiết đơn Tour</a> </p><p>Mã truy cập: <b>" . $pw . "</b></p>";
                     $user = new Default_Model_CustomerAccount ();
