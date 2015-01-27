@@ -40,7 +40,27 @@ class Default_OrderController extends Benly_DefaultController {
             $room_1_1 = $this->_request->getParam("room_1_1");
             $room_2_0 = $this->_request->getParam("room_2_0");
 
-            $result = $orderModel->Order_insert($customerId, 0, 0, 0, 0, 0, $tour_cat_id, date("Y-m-d H:i:s"), "Chưa thanh toán", 0, 0, 0, 0, $tour_id);
+            $orderModel->setData(
+                    array(
+                        'customer_id' => $customerId,
+                        'num_0_5_children' => 0,
+                        'num_6_12_children' => 0,
+                        'num_2_12_children' => 0,
+                        'num_foreigners' => 0,
+                        'num_adults' => 0,
+                        'tour_cat_id' => $tour_cat_id,
+                        'order_date' => date("Y-m-d H:i:s"),
+                        'status' => "Chưa thanh toán",
+                        'surcharges' => 0,
+                        'total' => 0,
+                        'outward_transport' => 0,
+                        'return_transport' => 0,
+                        'tour_id' => $tour_id
+                    )
+            );
+
+            $result = $orderModel->save();
+
             if ($result > 0) {
                 $orderId = $result;
             } else {
@@ -87,7 +107,7 @@ class Default_OrderController extends Benly_DefaultController {
 
             $data = $orderModel->load($orderId);
 
-            $calculate = $this->Calculate_Order($travellers, $transports, $tour_id, $tour_cat_id, $room_1_0, $room_0_2, $room_1_1, $room_2_0);
+            $calculate = $this->calculateOrder($travellers, $transports, $tour_id, $tour_cat_id, $room_1_0, $room_0_2, $room_1_1, $room_2_0);
 
             $orderModel->setTotal($calculate ['total']);
             $body = "<div>";
@@ -193,7 +213,7 @@ class Default_OrderController extends Benly_DefaultController {
                 $this->view->nation = $nationModel->Nation_listall();
                 $this->view->transport = $tranDetailModel->TransportDetail_getByTourId($tour_id);
                 $now = new DateTime ();
-                $this->view->tour_schedule = $tourScheduel->TourSchedule_getByTourID_And_Time($tour_id, date("Y-m-d", $now->format("U")));
+                $this->view->tour_schedule = $tourScheduel->loadByIdAndTime($tour_id, date("Y-m-d", $now->format("U")));
             }
         }
     }
@@ -227,7 +247,7 @@ class Default_OrderController extends Benly_DefaultController {
                     'nation_id' => $pas_nations[$i]);
                 $travellers[] = $temp;
             }
-            $calculate = $this->Calculate_Order($travellers, $transports, $tour_id, $tour_cat_id, $room_1_0, $room_0_2, $room_1_1, $room_2_0);
+            $calculate = $this->calculateOrder($travellers, $transports, $tour_id, $tour_cat_id, $room_1_0, $room_0_2, $room_1_1, $room_2_0);
             $body = "";
             $body = $body . "<p><b>Giá Tour: </b>" . $currency->toCurrency($calculate ['price_tour']) . "</p>";
             $body = $body . "<p><b>Số phụ thu phòng: </b>" . $calculate ['num_surcharge'] . "</p>";
@@ -247,7 +267,7 @@ class Default_OrderController extends Benly_DefaultController {
         $this->view->user = $user;
     }
 
-    public function Calculate_Order($travellers, $transports, $tour_id, $tour_cat_id, $num_1_0, $num_0_2, $num_1_1, $num_2_0) {
+    private function calculateOrder($travellers, $transports, $tour_id, $tour_cat_id, $num_1_0, $num_0_2, $num_1_1, $num_2_0) {
         $tour_price = new Default_Model_TourPrice ();
         $data = $tour_price->TourPrice_getByTour_Id_And_Tour_Cat_ID($tour_id, $tour_cat_id);
         if (!($tour_price))
@@ -325,22 +345,22 @@ class Default_OrderController extends Benly_DefaultController {
                 $tran->TransportDetail_getById($id);
                 // echo $tran->getPrice()."<br/>";
                 // Vé máy bay
-                if ($tran->getTransport_Id() == 2) {
+                if ($tran->getData('id') == 2) {
                     $total += $o * $tran->getPrice();
                     $temp += $o * $tran->getPrice();
-                } elseif ($tran->getTransport_Id() == 3) {
+                } elseif ($tran->getData('id') == 3) {
                     // Vé Xe lửa
 
-                    $total += $u * $tran->getPrice();
-                    $temp += $u * $tran->getPrice();
-                } elseif ($tran->getTransport_Id() == 4) {
-                    $total += $s * $tran->getPrice();
-                    $temp += $s * $tran->getPrice();
+                    $total += $u * $tran->getData('price');
+                    $temp += $u * $tran->getData('price');
+                } elseif ($tran->getData('id') == 4) {
+                    $total += $s * $tran->getData('price');
+                    $temp += $s * $tran->getData('price');
                 }
                 // Vé tàu thủy
             }
         }
-        $total += $a * $tour_price->getPrice() + $x * $tour_price->getSurcharge() + $w * $tour_price->getForeign_Charge();
+        $total += $a * $tour_price->getData('price') + $x * $tour_price->getData('surcharge') + $w * $tour_price->getData('foreign_charge');
 
         $result = array(
             "adult" => $m,
@@ -350,10 +370,10 @@ class Default_OrderController extends Benly_DefaultController {
             "under_2" => $k,
             "num_tralvers" => count($travellers),
             "num_surcharge" => $x,
-            "price_tour" => ($a * $tour_price->getPrice()),
+            "price_tour" => ($a * $tour_price->getData('price')),
             "price_trans" => ($temp),
-            "surcharge" => ($x * $tour_price->getSurcharge()),
-            "foreigner" => ($w * $tour_price->getForeign_Charge()),
+            "surcharge" => ($x * $tour_price->getData('surcharge')),
+            "foreigner" => ($w * $tour_price->getData('foreign_charge')),
             "total" => $total
         );
 

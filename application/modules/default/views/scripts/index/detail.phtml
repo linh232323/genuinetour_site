@@ -31,7 +31,7 @@ $schedule = new Default_Model_TourSchedule();
             </div>
             <div class="inner-content">
             <?php
-                    $day = $schedule->TourSchedule_getByTourID_And_Time($t['id'],date ( "Y-m-d H:i:s" ));
+                    $day = $schedule->loadByIdAndTime($t['id'],date ( "Y-m-d H:i:s" ));
                      if(count($day)>=1){?><p><?php echo $multi['schedule_label']['name'.$lang];?>:<br/> <b>
 					  <?php 
 					    

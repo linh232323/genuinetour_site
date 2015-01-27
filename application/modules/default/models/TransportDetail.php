@@ -41,7 +41,7 @@ class Default_Model_TransportDetail extends Default_Model_Abstract {
                     ->where("p.id = ?", $id)
                     ->join(array("p2" => $this->_table_tour_intro), "p.tour_id = p2.id", array($this->_table_tour_intro . "_name_{$language}" => "name_{$language}"))
                     ->join(array("p3" => $this->_table_transport), "p.transport_id = p3.id", array($this->_table_transport . "_name_{$language}" => "name_{$language}"));
-            $data = $this->db->fetchRow($select);
+            $this->_data = $this->db->fetchRow($select);
             if ($data) {
                 $this->_id = $data['id'];
                 $this->_tour_id = $data['tour_id'];
@@ -49,7 +49,7 @@ class Default_Model_TransportDetail extends Default_Model_Abstract {
                 $this->_price = $data['price'];
                 $this->_price_description = $data['price_description'];
             }
-            return $data;
+            return $this->_data;
         }
         return -1;
     }
