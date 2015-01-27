@@ -11,53 +11,6 @@ class Default_Model_TourPrice extends Default_Model_Abstract {
     protected $_surcharge;
     protected $_foreign_charge;
 
-    public function getTour_Id() {
-        return $this->_tour_id;
-    }
-
-    public function getTour_Cat_Id() {
-        return $this->_tour_cat_id;
-    }
-
-    public function getPrice() {
-        return $this->_price;
-    }
-
-    public function getForeign_Charge() {
-        return $this->_foreign_charge;
-    }
-
-    public function getSurcharge() {
-        return $this->_surcharge;
-    }
-
-    public function setTour_Id($tour_id) {
-        //$tour_id = $this->db->quote($tour_id,INTEGER);
-        $this->_tour_id = $tour_id;
-    }
-
-    public function setTour_Cat_Id($tour_cat_id) {
-        //$tour_cat_id = $this->db->quote($tour_cat_id,INTEGER);
-        $this->_tour_cat_id = $tour_cat_id;
-    }
-
-    public function setPrice($price) {
-        //$price = $this->db->quote($price,FLOAT);
-        $this->_price = $price;
-    }
-
-    public function setForeign_Charge($foreign_charge) {
-        //$foreign_charge = $this->db->quote($foreign_charge,FLOAT);
-        $this->_foreign_charge = $foreign_charge;
-    }
-
-    public function setSurcharge($surcharge) {
-        $this->_surcharge = $surcharge;
-    }
-
-    public function __construct() {
-        $this->db = Zend_Registry::get('db');
-    }
 
     public function TourPrice_update() {
         $where = "tour_id = $this->_tour_id and tour_cat_id = $this->_tour_cat_id";
@@ -112,9 +65,7 @@ class Default_Model_TourPrice extends Default_Model_Abstract {
                     ->join(array("p2" => $this->_table_tour_intro), "p.tour_id = p2.id", array($this->_table_tour_intro . "_name_{$language}" => "name_{$language}"))
                     ->join(array("p3" => $this->_table_tour_category), "p.tour_cat_id = p3.id", array($this->_table_tour_category . "_name_{$language}" => "tour_cat_name_{$language}"));
             $data = $this->db->fetchAll($select);
-            //$tour_id= $this->db->quote($tour_id,'INTEGER');
-            //$sql = $this->db->query("select * from tour_price where tour_id = $tour_id ");
-
+           
             return $data;
         }
         return -1;
