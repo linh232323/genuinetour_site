@@ -22,7 +22,7 @@ class Default_Form_SearchForm extends Zend_Form {
 		//				)));
 		
 		$outward_transport_list = new Default_Model_Transport();
-		$data = $outward_transport_list->Transport_listall();
+		$data = $outward_transport_list->listAll();
 
 
 		$_outward_transport = $this->createElement("select", "outward_transport");

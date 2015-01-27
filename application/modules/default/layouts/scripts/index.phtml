@@ -129,7 +129,7 @@ if (isset($this->lang)) {
                                             <td> <select name="outward_transport" style="width:90px">
                                                     <option value="0"><?php echo $multi['all_label']['name' . $lang] ?></option>
                                                     <?php $transport = new Default_Model_Transport();
-                                                    $data = $transport->Transport_listall();
+                                                    $data = $transport->listAll();
                                                     ?>
 
 <?php

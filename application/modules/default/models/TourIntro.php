@@ -32,12 +32,12 @@ class Default_Model_TourIntro extends Default_Model_Abstract {
 //		return $this->_post_en;
 //	}
 
-  
+
 
 
     public function TourIntro_search($tour_name, $outward_transport, $return_transport, $during) {
-		 $language = $this->_language;
-            
+        $language = $this->_language;
+
         if ($outward_transport == 0) {
             $query_outward = "1 = 1";
         } else {
@@ -95,14 +95,14 @@ class Default_Model_TourIntro extends Default_Model_Abstract {
     }
 
     public function TourIntro_listall() {
+        $language = $this->_language;
+        
         $select = $this->db->select()
                 ->from(array("p" => $this->_table_name))
                 ->order('p.id DESC')
-                ->join(array("p2" => $this->_table_tour_section), "p.tour_section_id = p2.id", array($this->_table_tour_section . "_name" => "name"))
-                ->join(array("p3" => $this->_table_transport), "p.outward_transport = p3.id", array($this->_table_transport . "_outward_name" => "name",
-                    $this->_table_transport . "_outward_name_en" => "name_en"))
-                ->join(array("p4" => $this->_table_transport), "p.return_transport = p4.id", array($this->_table_transport . "_return_name" => "name",
-            $this->_table_transport . "_return_name_en" => "name_en"));
+                ->join(array("p2" => $this->_table_tour_section), "p.tour_section_id = p2.id", array($this->_table_tour_section . "_name_{$language}" => "name_{$language}"))
+                ->join(array("p3" => $this->_table_transport), "p.outward_transport = p3.id", array($this->_table_transport . "_outward_name_{$language}" => "name_{$language}"))
+                ->join(array("p4" => $this->_table_transport), "p.return_transport = p4.id", array($this->_table_transport . "_return_name_{$language}" => "name_{$language}"));
         $data = $this->db->fetchAll($select);
         return $data;
     }
@@ -118,7 +118,7 @@ class Default_Model_TourIntro extends Default_Model_Abstract {
                     ->join(array("p3" => $this->_table_transport), "p.outward_transport = p3.id", array($this->_table_transport . "_outward_name_{$language}" => "name_{$language}"))
                     ->join(array("p4" => $this->_table_transport), "p.return_transport = p4.id", array($this->_table_transport . "_return_name_{$language}" => "name_{$language}"));
             $this->_data = $this->db->fetchRow($select);
-            
+
             return $this->_data;
         }
         return -1;
@@ -139,7 +139,7 @@ class Default_Model_TourIntro extends Default_Model_Abstract {
 
     public function TourIntro_getByTourSection($tour_section_id, $query = true, $limit = 0) { {
             $language = $this->_language;
-            
+
             if ($tour_section_id != 0) {
                 $tour_section = new Default_Model_TourSection();
                 $temp = $tour_section->TourSection_listall();
@@ -154,7 +154,7 @@ class Default_Model_TourIntro extends Default_Model_Abstract {
                 $select->where("p.tour_section_id in (?)", $items);
 
             $select->order('p.id DESC')
-                    ->join(array("p2" => $this->_table_tour_section), "p.tour_section_id = p2.id", array($this->_table_tour_section . "_name_{$language}" => "name_{$language}" ))
+                    ->join(array("p2" => $this->_table_tour_section), "p.tour_section_id = p2.id", array($this->_table_tour_section . "_name_{$language}" => "name_{$language}"))
                     ->join(array("p3" => $this->_table_transport), "p.outward_transport = p3.id", array($this->_table_transport . "_outward_name_{$language}" => "name_{$language}",
                         $this->_table_transport . "_outward_name_{$language}" => "name_{$language}"))
                     ->join(array("p4" => $this->_table_transport), "p.return_transport = p4.id", array($this->_table_transport . "_return_name" => "name_{$language}",
