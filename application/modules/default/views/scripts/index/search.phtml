@@ -12,13 +12,13 @@ $multi = $this->multilang;
 	        ?>
 	        <a href="/index/detail/id/<?php echo $t['id']; ?>">
 	            <div class="inner_left">
-  					<h3><?php echo $t['name'.$lang]; ?></h3>
+  					<h3><?php echo $t['name_'.$lang]; ?></h3>
              
                     <img src="<?php echo $t['thumbnail_url']; ?>" class="tour-thumb"/>
              
                   
 
-                    <p><b><?php echo $multi['during_label']['name'.$lang];?>: </b><?php $night =  $t['during'];
+                    <p><b><?php echo $multi['during_label']['name'.$lang];?>: </b><?php $night =  $t['during_'.$lang];
 	                    if($night!= floor($night)){
 							echo $night." ".$multi['day_label']['name'.$lang];
 						}else{
@@ -27,8 +27,8 @@ $multi = $this->multilang;
 							echo $day." ".$multi['day_label']['name'.$lang]." ".$night." ".$multi['night_label']['name'.$lang];
 
 						}?></p>
-                    <p><b><?php echo $multi['outward_label']['name'.$lang];?>: </b><?php echo $t['transport_outward_name'.$lang]; ?></p>
-                    <p><b><?php echo $multi['return_label']['name'.$lang];?>: </b><?php echo $t['transport_return_name'.$lang]; ?></p>
+                    <p><b><?php echo $multi['outward_label']['name'.$lang];?>: </b><?php echo $t['transport_outward_name_'.$lang]; ?></p>
+                    <p><b><?php echo $multi['return_label']['name'.$lang];?>: </b><?php echo $t['transport_return_name_'.$lang]; ?></p>
                     <p><b><?php echo $multi['price_label']['name'.$lang];?>: </b><?php echo $t['price'];  ?> VND</p>
 
                 

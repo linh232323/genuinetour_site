@@ -36,7 +36,8 @@ class Default_Model_TourIntro extends Default_Model_Abstract {
 
 
     public function TourIntro_search($tour_name, $outward_transport, $return_transport, $during) {
-
+		 $language = $this->_language;
+            
         if ($outward_transport == 0) {
             $query_outward = "1 = 1";
         } else {
@@ -55,15 +56,15 @@ class Default_Model_TourIntro extends Default_Model_Abstract {
 
         $select = $this->db->select()
                 ->from(array("p" => $this->_table_name))
-                ->where("p.name LIKE ?", "%" . $tour_name . "%")
+                ->where("p.name_{$language} LIKE ?", "%" . $tour_name . "%")
                 ->where($query_outward, $outward_transport)
                 ->where($query_return, $return_transport)
                 ->where($query_during, $during)
-                ->join(array("p2" => $this->_table_tour_section), "p.tour_section_id = p2.id", array($this->_table_tour_section . "_name" => "name"))
-                ->join(array("p3" => $this->_table_transport), "p.outward_transport = p3.id", array($this->_table_transport . "_outward_name" => "name",
+                ->join(array("p2" => $this->_table_tour_section), "p.tour_section_id = p2.id", array($this->_table_tour_section . "_name_{$language}" => "name_{$language}"))
+                ->join(array("p3" => $this->_table_transport), "p.outward_transport = p3.id", array($this->_table_transport . "_outward_name_{$language}" => "name_{$language}",
                     $this->_table_transport . "_outward_name_en" => "name_en"))
-                ->join(array("p4" => $this->_table_transport), "p.return_transport = p4.id", array($this->_table_transport . "_return_name" => "name",
-            $this->_table_transport . "_return_name_en" => "name_en"));
+                ->join(array("p4" => $this->_table_transport), "p.return_transport = p4.id", array($this->_table_transport . "_return_name_{$language}" => "name_{$language}",
+            $this->_table_transport . "_return_name_{$language}" => "name_{$language}"));
         $data = $this->db->fetchAll($select);
         return $data;
     }
