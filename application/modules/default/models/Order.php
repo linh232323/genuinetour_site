@@ -69,7 +69,7 @@ class Default_Model_Order extends Default_Model_Abstract {
             $select = $this->db->select()
                     ->from(array("p" => $this->_table_name))
                     ->where("p.status = ?", $status)
-                    ->join(array("p1" => $this->_table_tour_cat), "p.tour_cat_id = p1.id", array($this->_table_tour_cat . "_name" => "tour_cat_name_{$language}"))
+                    ->join(array("p1" => $this->_table_tour_cat), "p.tour_cat_id = p1.id", array($this->_table_tour_cat . "_name_{$language}" => "tour_cat_name_{$language}"))
                     ->join(array("p2" => $this->_table_transport), "p.outward_transport = p2.id", array($this->_table_transport . "_outward_{$language}" => "name_{$language}"))
                     ->join(array("p3" => $this->_table_transport), "p.return_transport = p3.id", array($this->_table_transport . "_return_{$language}" => "name_{$language}"))
                     ->join(array("p4" => $this->_table_customer), "p.customer_id = p4.id", array($this->_table_customer . "_username" => "username"))

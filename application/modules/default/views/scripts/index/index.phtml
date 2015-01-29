@@ -37,7 +37,7 @@ $schedule = new Default_Model_TourSchedule();
                         <tr><td><b><?php echo $multi['price_label']['name' . $lang]; ?>   </b></td><td class='currency'><?php echo $t['price']; ?></td></tr>
                         <tr>       
                             <?php
-                            $day = $schedule->TourSchedule_getByTourID_And_Time($t['id'], date("Y-m-d H:i:s"));
+                            $day = $schedule->loadByIdAndTime($t['id'], date("Y-m-d H:i:s"));
                             if (count($day) >= 1) {
                                 ?><td valign="top"><b><?php echo $multi['schedule_label']['name' . $lang]; ?></b></td>
                                 <td width="150px">
@@ -101,7 +101,7 @@ foreach ($tours2 as $t) {
                         <tr><td><b><?php echo $multi['price_label']['name' . $lang]; ?>   </b></td><td class='currency'><?php echo $t['price']; ?></td></tr>
                         <tr>       
                                 <?php
-                                $day = $schedule->TourSchedule_getByTourID_And_Time($t['id'], date("Y-m-d H:i:s"));
+                                $day = $schedule->loadByIdAndTime($t['id'], date("Y-m-d H:i:s"));
                                 if (count($day) >= 1) {
                                     ?><td valign="top"><b><?php echo $multi['schedule_label']['name' . $lang]; ?></b></td><td>
                                     <?php
