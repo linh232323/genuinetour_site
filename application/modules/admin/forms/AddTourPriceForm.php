@@ -13,7 +13,7 @@ class Admin_Form_AddTourPriceForm extends Zend_Form {
         $tour = $this->createElement("select", "tour_id");
         $tour->setAttrib("class", "text-input small-input");
         foreach ($data as $item) {
-            $tour->addMultiOption($item['id'], $item['name']);
+            $tour->addMultiOption($item['id'], $item['name_vi']);
         }
         $tour->setLabel("Tour");
         $this->addElement($tour);
@@ -24,7 +24,7 @@ class Admin_Form_AddTourPriceForm extends Zend_Form {
         $tour_category = $this->createElement("select", "tour_cat_id");
         $tour_category->setAttrib("class", "text-input small-input");
         foreach ($data as $item) {
-            $tour_category->addMultiOption($item['id'], $item['tour_cat_name']);
+            $tour_category->addMultiOption($item['id'], $item['tour_cat_name_vi']);
         }
         $tour_category->setLabel("Hạng Tour");
         $this->addElement($tour_category);

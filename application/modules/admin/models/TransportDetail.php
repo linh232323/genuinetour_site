@@ -69,10 +69,10 @@ protected $_table_name="transport_detail";
 					
 					->join(array("p2"=>$this->_table_tour_intro),
 							"p.tour_id = p2.id",
-							array($this->_table_tour_intro."_name"=>"name"))
+							array($this->_table_tour_intro."_name"=>"name_vi"))
 					->join(array("p3" => $this->_table_transport),
 							"p.transport_id = p3.id",
-							array($this->_table_transport."_name"=>"name"));
+							array($this->_table_transport."_name"=>"name_vi"));
 			$data = $this->db->fetchAll($select);
 			return $data;	
 	}
@@ -136,10 +136,10 @@ protected $_table_name="transport_detail";
 					->where("p.tour_id = ?",$tour_id)
 					->join(array("p2"=>$this->_table_tour_intro),
 							"p.tour_id = p2.id",
-							array($this->_table_tour_intro."_name"=>"name"))
+							array($this->_table_tour_intro."_name"=>"name_vi"))
 					->join(array("p3" => $this->_table_transport),
 							"p.transport_id = p3.id",
-							array($this->_table_transport."_name"=>"name",
+							array($this->_table_transport."_name"=>"name_vi",
 									$this->_table_transport."_name_en"=>"name_en"));
 			$data = $this->db->fetchAll($select);		
 			return $data;

@@ -15,7 +15,7 @@
         foreach ($schedule as $s){
         ?>
         <tr>
-            <td><?php $t = $tour_model->TourIntro_getById($s['tour_id']); echo $t['name'];?></td>
+            <td><?php $t = $tour_model->TourIntro_getById($s['tour_id']); echo $t['name_vi'];?></td>
             <td><?php echo date("d-m-Y", strtotime($s['start_date']));?></td>
             <td>
                 <a href="/admin/tour-schedule/edit/id/<?php echo $s['id'];?>">Sửa</a>

@@ -33,7 +33,7 @@ class Admin_Model_Transport extends Zend_Db{
 	public function Transport_update(){
 		$where = "id = $this->_id";
 		$data = array(
-						'name'=> $this->_name,
+						'name_vi'=> $this->_name,
 						'name_en' => $this->_name_en);
 		return $this->db->update($this->_table_name,$data,$where);
 	}
@@ -86,7 +86,7 @@ class Admin_Model_Transport extends Zend_Db{
 			
 			if($data){
 				$this->_id = $data['id'];
-				$this->_name = $data['name'];
+				$this->_name = $data['name_vi'];
 				$this->_name_en = $data['name_en'];
 			}
 			return $data;

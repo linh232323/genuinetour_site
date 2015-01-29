@@ -19,9 +19,9 @@
             ?>
             <tr>
                 <td><?php echo $t['code']; ?></td>
-                <td><?php echo $t['name']; ?></td>
+                <td><?php echo $t['name_vi']; ?></td>
                 <td><?php
-	                    $night =  $t['during'];
+	                    $night =  $t['during_vi'];
 	                    if($night == floor($night)){
 							echo "$night Ngày";
 						}else{
@@ -30,8 +30,8 @@
 							echo "$day Ngày $night Đêm";
 
 						}?></td>
-                <td><?php echo $t['transport_outward_name']; ?></td>
-                <td><?php echo $t['transport_return_name']; ?></td>
+                <td><?php echo $t['transport_outward_name_vi']; ?></td>
+                <td><?php echo $t['transport_return_name_vi']; ?></td>
                 <td>
                     <a href="/admin/tour/edit/id/<?php echo $t['id']; ?>">Sửa</a>
                     <a class="delete" href="/admin/tour/del/id/<?php echo $t['id']; ?>">Xóa</a>

@@ -10,12 +10,12 @@ class Benly_Support {
                 $is_parent = self :: is_parent($data, $menu['id']);
                 
                 if ($is_parent) {
-                    $result .= " <li class='nav-item'><div><a href='" . $menu['link' . $lang] . "'>" . $menu['name' . $lang] . "</a> <ul class='sub-menu'>";
+                    $result .= " <li class='nav-item'><div><a href='" . $menu['link_vi' . $lang] . "'>" . $menu['name_vi' . $lang] . "</a> <ul class='sub-menu'>";
                 } else {
                     if ($parent != 0)
-                        $result .= "<li><a href='" . $menu['link' . $lang] . "'>" . $menu['name' . $lang] . "</a></li>";
+                        $result .= "<li><a href='" . $menu['link_vi' . $lang] . "'>" . $menu['name_vi' . $lang] . "</a></li>";
                     else {
-                        $result .= "<li class='nav-item'><div><a href='" . $menu['link' . $lang] . "'>" . $menu['name' . $lang] . "</a></div></li>";
+                        $result .= "<li class='nav-item'><div><a href='" . $menu['link_vi' . $lang] . "'>" . $menu['name_vi' . $lang] . "</a></div></li>";
                     }
                 }
                 unset($data[$k]);

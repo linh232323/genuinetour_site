@@ -23,7 +23,7 @@ class Admin_Form_AddTransportDetailForm extends Zend_Form{
         $tour_intro =$this->createElement("select", "tour_id");
         $tour_intro->setAttrib("class", "text-input small-input");
         foreach($data as $item){
-        	$tour_intro->addMultiOption($item['id'],$item['name']);
+        	$tour_intro->addMultiOption($item['id'],$item['name_vi']);
         }
         $tour_intro->setLabel("Tên Tour");
         $this->addElement($tour_intro);
@@ -32,7 +32,7 @@ class Admin_Form_AddTransportDetailForm extends Zend_Form{
         $data = $model->Transport_listall();
         $transport_id =$this->createElement("select", "transport_id");
         foreach($data as $item){
-        	$transport_id->addMultiOption($item['id'],$item['name']);
+        	$transport_id->addMultiOption($item['id'],$item['name_vi']);
         }
         $transport_id->setAttrib("class", "text-input small-input");
         $transport_id->setLabel("Phương tiện");

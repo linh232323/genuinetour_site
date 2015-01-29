@@ -1,0 +1,36 @@
+<table>
+    <?php
+    foreach ($this->menulist as $value) {
+        $id = $value['id'];
+        $name_vi = $value['name_vi'];
+        $name_en = $value['name_en'];
+        ?>
+
+        <tr>
+            <td>
+                <?php
+                echo $id;
+                ?>
+            </td>
+            <td>
+                <?php
+                echo $name_vi;
+                ?>
+            </td>
+            <td>
+                <?php
+                echo $name_en;
+                ?>
+            </td>
+            <td>
+                <?php
+                echo "<a href='/admin/menu/edit/id/$id'>Sửa</a>";
+                echo " | ";
+                echo "<a class='delete' href='/admin/menu/del/id/$id'>Xóa</a>";
+                ?>
+            </td>
+        </tr>
+        <?php
+    }
+    ?>
+</table>

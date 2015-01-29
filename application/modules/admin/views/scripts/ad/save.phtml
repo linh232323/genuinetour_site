@@ -1,0 +1,28 @@
+<?php
+
+$arraycsv = $this->arraycsv;
+foreach ($arraycsv as $key => $value)
+		{
+			echo $value[0].": ".$value[1]."</br>";
+		}
+		echo "</br>";
+		echo "</br>";
+		echo "</br>";
+		for ($row = 0; $row < count ($arraycsv); $row++)
+		{
+			$rowArray = $_POST[$row]; 
+			if(!empty($rowArray)){
+			$arraycsv[$row][1] = "$rowArray";
+			}
+		}
+		foreach ($arraycsv as $key => $value)
+		{
+			echo $value[0].": ".$value[1]."</br>";
+		}
+		$f2 = fopen($csvfile2, "w+"); 
+		foreach ($arraycsv as $v) { 
+		fputcsv($f2,$v); 
+		} 
+		fclose($f); 
+		fclose($f2);    
+?>

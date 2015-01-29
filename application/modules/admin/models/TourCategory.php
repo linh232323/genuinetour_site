@@ -88,7 +88,7 @@ class Admin_Model_TourCategory extends Zend_Db{
 			$data = $this->db->fetchRow($select);
 			if($data){
 				$this->_id = $data['id'];
-				$this->_tour_cat_name = $data['tour_cat_name'];
+				$this->_tour_cat_name = $data['tour_cat_name_vi'];
 				$this->_tour_cat_name_en = $data['tour_cat_name_en'];
 			}
 			return $data;

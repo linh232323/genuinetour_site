@@ -43,7 +43,7 @@ class Admin_Model_TourSchedule extends Zend_Db{
 					->from(array("p"=>$this->_table_name))
 					->join(array("p2"=>$this->_table_tour_intro),
 							"p.tour_id = p2.id",
-							array($this->_table_tour_intro."_name"=>"name",
+							array($this->_table_tour_intro."_name"=>"name_vi",
 									$this->_table_tour_intro."_name_en"=>"name_en"));
 					
 				
@@ -99,7 +99,7 @@ class Admin_Model_TourSchedule extends Zend_Db{
 					->where("p.start_date >= ?",$begin)
 					->join(array("p2"=>$this->_table_tour_intro),
 							"p.tour_id = p2.id",
-							array($this->_table_tour_intro."_name"=>"name",
+							array($this->_table_tour_intro."_name"=>"name_vi",
 									$this->_table_tour_intro."_name_en"=>"name_en"));
 			}
 			else{
@@ -109,7 +109,7 @@ class Admin_Model_TourSchedule extends Zend_Db{
 					->where("p.start_date <= ?",$end)
 					->join(array("p2"=>$this->_table_tour_intro),
 							"p.tour_id = p2.id",
-							array($this->_table_tour_intro."_name"=>"name",
+							array($this->_table_tour_intro."_name"=>"name_vi",
 									$this->_table_tour_intro."_name_en"=>"name_en"));
 			}
 			

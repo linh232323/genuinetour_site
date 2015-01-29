@@ -35,7 +35,7 @@ class Admin_TransportController extends Benly_AdminController{
 			if ($form->isValid($_POST)){
 				
 				$model->Transport_getById($form->getValue("id"));
-				$model->setName($form->getValue("name"));
+				$model->setName($form->getValue("name_vi"));
 				$model->setName_En($form->getValue("name_en"));
 		
 				$result = $model->Transport_update();

@@ -63,11 +63,11 @@ class Admin_Model_TourPrice extends Zend_Db{
 					->from(array("p"=>$this->_table_name))
 					->join(array("p2"=>$this->_table_tour_intro),
 							"p.tour_id = p2.id",
-							array($this->_table_tour_intro."_name"=>"name",
+							array($this->_table_tour_intro."_name"=>"name_vi",
 									$this->_table_tour_intro."_name_en"=>"name_en"))
 					->join(array("p3"=>$this->_table_tour_category),
 							"p.tour_cat_id = p3.id",
-							array($this->_table_tour_category."_tour_cat_name"=>"tour_cat_name",
+							array($this->_table_tour_category."_tour_cat_name"=>"tour_cat_name_vi",
 									$this->_table_tour_category."_tour_cat_name_en"=>"tour_cat_name_en"));
 		$data = $this->db->fetchAll($select);
 		return $data;
@@ -115,11 +115,11 @@ class Admin_Model_TourPrice extends Zend_Db{
 			
 			->join(array("p2"=>$this->_table_tour_intro),
 					"p.tour_id = p2.id",
-					array($this->_table_tour_intro."_name"=>"name",
+					array($this->_table_tour_intro."_name"=>"name_vi",
 							$this->_table_tour_intro."_name_en"=>"name_en"))
 							->join(array("p3"=>$this->_table_tour_category),
 									"p.tour_cat_id = p3.id",
-									array($this->_table_tour_category."_tour_cat_name"=>"tour_cat_name",
+									array($this->_table_tour_category."_tour_cat_name"=>"tour_cat_name_vi",
 											$this->_table_tour_category."_tour_cat_name_en"=>"tour_cat_name_en"));
 							$data = $this->db->fetchAll($select);
 			//$tour_id= $this->db->quote($tour_id,'INTEGER');
@@ -171,11 +171,11 @@ class Admin_Model_TourPrice extends Zend_Db{
 			->where("tour_cat_id = ?",$tour_cat_id)
 			->join(array("p2"=>$this->_table_tour_intro),
 					"p.tour_id = p2.id",
-					array($this->_table_tour_intro."_name"=>"name",
+					array($this->_table_tour_intro."_name"=>"name_vi",
 							$this->_table_tour_intro."_name_en"=>"name_en"))
 							->join(array("p3"=>$this->_table_tour_category),
 									"p.tour_cat_id = p3.id",
-									array($this->_table_tour_category."_tour_cat_name"=>"tour_cat_name",
+									array($this->_table_tour_category."_tour_cat_name"=>"tour_cat_name_vi",
 											$this->_table_tour_category."_tour_cat_name_en"=>"tour_cat_name_en"));
 			$data = $this->db->fetchAll($select);
 			return count($data);

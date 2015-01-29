@@ -86,7 +86,7 @@ protected $_table_name = "post";
 							array($this->_table_system_account."_username"=>"username"))
 					->join(array("p3" => $this->_table_post_category),
 							"p.post_cat_id = p3.id",
-							array($this->_table_post_category."_name"=>"name"));
+							array($this->_table_post_category."_name"=>"name_vi"));
 		$data = $this->db->fetchAll($select);
 		return $data;
 	}

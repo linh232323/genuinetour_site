@@ -1,0 +1,44 @@
+
+<?php
+
+$arraycsv = $this->arraycsv;
+
+echo "<form action='/admin/ad/save' method='post'>";
+?>
+<table >
+<?php
+for ($row = 0; $row < count ($arraycsv); $row++)
+ {
+	 ?>
+	 <tr class="<?php if ($row%2==0){echo "odd";} else echo "even";?>">
+	 <?php
+    for ($col = 0; $col <1; $col++)
+        {
+			
+			?>
+		
+		<td>
+		<?php
+		echo $arraycsv[$row][$col]." :";
+		?>
+		</td>
+		<td>
+		<?php
+		echo " <input type='text' name='".$row."' value = '".$arraycsv[$row][1]."'></br>";
+		?>
+		</td>
+		<?php
+         }
+	?>
+	
+	</tr>
+	<?php
+}
+?>
+</table>
+<?php
+echo "</br>";
+echo "<input type='submit'>";
+echo "</form>";
+?>
+

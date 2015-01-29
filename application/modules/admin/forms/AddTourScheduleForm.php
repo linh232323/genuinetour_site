@@ -8,7 +8,7 @@ class Admin_Form_AddTourScheduleForm extends Zend_Form{
 		$data = $tour_intro->TourIntro_listall();
 		$temp = array();
 		foreach($data as $item){
-			$temp[$item['id']] = $item['name'];
+			$temp[$item['id']] = $item['name_vi'];
 		}
 		
 		$tour = $this->createElement("select", "tour_id",array('multiOptions'=>$temp));

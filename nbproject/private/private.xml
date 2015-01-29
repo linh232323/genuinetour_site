@@ -2,18 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/Volumes/Data/Web/genuinetour/application/modules/default/models/Menu.php</file>
-            <file>file:/Volumes/Data/Web/genuinetour/public/default/js/main.js</file>
-            <file>file:/Volumes/Data/Web/genuinetour/application/configs/lang_vi.csv</file>
-            <file>file:/Volumes/Data/Web/genuinetour/application/modules/default/views/scripts/index/detail.phtml</file>
-            <file>file:/Volumes/Data/Web/genuinetour/application/modules/default/models/TourSchedule.php</file>
-            <file>file:/Volumes/Data/Web/genuinetour/library/Benly/DefaultParentController.php</file>
-            <file>file:/Volumes/Data/Web/genuinetour/application/modules/default/views/scripts/index/index.phtml</file>
-            <file>file:/Volumes/Data/Web/genuinetour/application/modules/default/models/Nation.php</file>
-            <file>file:/Volumes/Data/Web/genuinetour/application/modules/default/views/scripts/index/domestic.phtml</file>
-            <file>file:/Volumes/Data/Web/genuinetour/application/configs/lang_en.csv</file>
-            <file>file:/Volumes/Data/Web/genuinetour/public/default/css/main.css</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>

@@ -19,8 +19,7 @@ class Admin_IndexController extends Benly_AdminController{
         $this->view->generalCurrent = "current";
         $this->view->title = "Benly - Khu vực quản trị";
         $this->view->intro = "Giới thiệu";
-                
+        
     }
 }
-
 ?>
