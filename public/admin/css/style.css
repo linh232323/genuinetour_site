@@ -798,3 +798,14 @@ div.wysiwyg iframe { border: 0; margin: 5px 0 0 0; clear: left; width: 97.5% !im
 	color : blue;
 	background: white !important;
 }
+.table_menu tr td{
+    width: 15%;
+}
+
+.table_menu tr td:first-child{
+    width: 20px;
+}
+
+.table_menu tr td:last-child{
+    width: 20px;
+}

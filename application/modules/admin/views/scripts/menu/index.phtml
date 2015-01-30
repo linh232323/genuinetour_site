@@ -1,9 +1,51 @@
-<table>
+<table class = "table_menu">
+    <tr>
+        <td>
+            <?php
+            echo "id";
+            ?>
+        </td>
+        <td>
+            <?php
+            echo "name_vi";
+            ?>
+        </td>
+        <td>
+            <?php
+            echo "name_en";
+            ?>
+        </td>
+        <td>
+            <?php
+            echo "link_vi";
+            ?>
+        </td>
+        <td>
+            <?php
+            echo "link_en";
+            ?>
+        </td>
+        <td>
+            <?php
+            echo "parent_id";
+            ?>
+        </td>
+        <td>
+            <?php
+            echo "Sửa | Xóa";
+            ?>
+        </td>
+    </tr>
+</table>
+<table class = "table_menu">
     <?php
     foreach ($this->menulist as $value) {
         $id = $value['id'];
         $name_vi = $value['name_vi'];
         $name_en = $value['name_en'];
+        $link_vi = $value['link_vi'];
+        $link_en = $value['link_en'];
+        $parent_id = $value['parent_id'];
         ?>
 
         <tr>
@@ -20,6 +62,21 @@
             <td>
                 <?php
                 echo $name_en;
+                ?>
+            </td>
+            <td>
+                <?php
+                echo $link_vi;
+                ?>
+            </td>
+            <td>
+                <?php
+                echo $link_en;
+                ?>
+            </td>
+            <td>
+                <?php
+                echo $parent_id;
                 ?>
             </td>
             <td>
