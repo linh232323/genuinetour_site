@@ -47,3 +47,7 @@ q:before, q:after {
 blockquote, q {
 	quotes: "" "";
 }
+
+.zend_form dt {
+	margin-top: 10px;
+}

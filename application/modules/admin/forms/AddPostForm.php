@@ -35,7 +35,7 @@ class Admin_Form_AddPostForm extends Zend_Form{
 		$post_cat_id = $this->createElement("select", "post_cat_id");
 		$post_cat_id->setAttrib("class", "text-input small-input");
 		foreach ($data as $d){
-			$post_cat_id->addMultiOption($d['id'],$d['name']);
+			$post_cat_id->addMultiOption($d['id'],$d['name_vi']);
 		}
 		$post_cat_id->setLabel("Thư Mục");
 		$this->addElement($post_cat_id);

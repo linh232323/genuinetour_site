@@ -32,10 +32,18 @@ class Admin_Form_EditMenuForm extends Zend_Form {
         $link_en->setAttrib("class", "text-input small-input");
         $link_en->setLabel("Link (English)");
         $this->addElement($link_en);
-
+        
+        $arrayParent = array ();
+        foreach ($arraykey as $key=> $value)
+        { 
+          $parentModel = new Admin_Model_Menu();
+          $parentModel-> load($value);
+          $arrayParent[$value] =  $parentModel->getData('name_vi');
+            };
           
         $parent_id = $this->createElement('select', 'parent_id', array(
-            'multiOptions' => $arraykey)
+            'multiOptions' => $arrayParent,
+            )
         );
         $parent_id->setAttrib("class", "select-input small-input");
         $parent_id->setLabel("Parent ID");

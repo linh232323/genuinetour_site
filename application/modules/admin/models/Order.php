@@ -41,7 +41,7 @@ protected $_table_name = "order";
 		return $this->_num_adults;
 	}
 	public function getNum_Foreigners(){
-		return $this->$_num_foreigners ;
+		return $this->_num_foreigners ;
 	}
 	public function getOutward_Transport(){
 		return $this->_outward_transport;
@@ -107,7 +107,7 @@ protected $_table_name = "order";
 	}
 	public function setNum_Foreigners($num_foreigners){
 		//$num_foreigners = $this->db->quote($num_foreigners,INTEGER);
-		$this->$_num_foreigners =$num_foreigners ;
+		$this->_num_foreigners =$num_foreigners ;
 	}
 	public function setOutward_Transport($outward_transport){
 		//$outward_transport = $this->db->quote($outward_transport,INTEGER);

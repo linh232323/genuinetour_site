@@ -50,7 +50,7 @@ protected $_outward_transport;
 		$data = $tour_section_list->TourSection_listall();
 		$temp = array();
 		foreach($data as $item){
-			$temp[$item['id']] = $item['name'];
+			$temp[$item['id']] = $item['name_vi'];
 		}
 		$_tour_section_id = $this->createElement("select", "tour_section_id",array("multiOptions"=>$temp));
 		$_tour_section_id->setAttrib("class", "text-input small-input");
@@ -140,7 +140,7 @@ protected $_outward_transport;
 		$data = $outward_transport_list->Transport_listall();
 		$temp = array();
 		foreach($data as $item){
-			$temp[$item['id']] = $item['name'];
+			$temp[$item['id']] = $item['name_vi'];
 		}
 		$_outward_transport = $this->createElement("select", "outward_transport",array('multiOptions' => $temp));
 		$_outward_transport->setAttrib("class", "text-input small-input");

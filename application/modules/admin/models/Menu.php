@@ -84,6 +84,24 @@ class Admin_Model_Menu extends Admin_Model_Abstract {
 
     }
 
+    public function listAll() {
+
+        $select = $this->db->select(array ("p.id"=> "id",
+                                           "p.name_vi"=>"name_vi",
+            "p.name_en"=>"name_en",
+            "p.link_en"=>"link_en",
+            "p.link_vi"=>"link_vi",
+            "p2.name_vi"=>"parent_id"))
+                ->from(array("p" => $this->_table_name))
+                ->joinLeft(array("p2" => $this->_table_name), "p.parent_id = p2.id", array("parent_name" => "p2.name_vi"));
+        $data = $this->db->fetchAll($select);
+
+
+
+
+        return $data;
+    }
+
     public function Menu_delete($id) {
         if ($id) {
             $data = $this->listAll();

@@ -7,7 +7,7 @@ class Admin_Form_EditRoomCategoryForm extends Zend_Form{
         $id = $this->createElement("hidden","id");
         $this->addElement($id);
 		
-		$name_vi = $this->createElement("text","name");
+		$name_vi = $this->createElement("text","name_vi");
 		$name_vi->setAttrib("class", "text-input small-input");
 		$name_vi->setLabel("Loại phòng(Vietnam)");
 		$this->addElement($name_vi);

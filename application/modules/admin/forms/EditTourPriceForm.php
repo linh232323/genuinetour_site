@@ -23,7 +23,7 @@ class Admin_Form_EditTourPriceForm extends Zend_Form {
         $tour = $this->createElement("select", "tour_id");
         $tour->setAttrib("class", "text-input small-input");
         foreach ($data as $item) {
-            $tour->addMultiOption($item['id'], $item['name']);
+            $tour->addMultiOption($item['id'], $item['name_vi']);
         }
         $tour->setLabel("Tour");
         $tour->setValue($tour_id->getValue());

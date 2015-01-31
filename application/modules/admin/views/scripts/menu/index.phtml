@@ -1,3 +1,4 @@
+
 <table class = "table_menu">
     <tr>
         <td>
@@ -27,25 +28,27 @@
         </td>
         <td>
             <?php
-            echo "parent_id";
+            //echo "parent_id";
+            echo "parent_name";
             ?>
         </td>
         <td>
             <?php
-            echo "Sửa | Xóa";
+            echo " ";
             ?>
         </td>
     </tr>
 </table>
 <table class = "table_menu">
     <?php
-    foreach ($this->menulist as $value) {
+    foreach ($this->menulist as $keys => $value) {
         $id = $value['id'];
         $name_vi = $value['name_vi'];
         $name_en = $value['name_en'];
         $link_vi = $value['link_vi'];
         $link_en = $value['link_en'];
-        $parent_id = $value['parent_id'];
+        //$parent_id = $value['parent_id'];
+        $parent_name = $value['parent_name'];
         ?>
 
         <tr>
@@ -76,7 +79,8 @@
             </td>
             <td>
                 <?php
-                echo $parent_id;
+                //echo $parent_id;
+               echo $parent_name;
                 ?>
             </td>
             <td>

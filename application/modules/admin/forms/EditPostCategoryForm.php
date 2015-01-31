@@ -7,7 +7,7 @@ class Admin_Form_EditPostCategoryForm extends Zend_Form{
 		$id = $this->createElement("hidden","id");
 		$this->addElement($id);
 		
-		$name_vi = $this->createElement("text","name");
+		$name_vi = $this->createElement("text","name_vi");
 		$name_vi->setAttrib("class", "text-input small-input");
 	    $name_vi->setLabel("Tên mục(Vietnam)");
 	    $this->addElement($name_vi);
